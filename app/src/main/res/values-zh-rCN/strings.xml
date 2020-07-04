@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">也再</string>
-    <string name="please_wait">请稍后</string>
-    <string name="app_will_finish_because_error">应用遇到了错误即将停止运行</string>
-</resources>

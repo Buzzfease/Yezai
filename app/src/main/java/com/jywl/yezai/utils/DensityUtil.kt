@@ -14,7 +14,7 @@ object DensityUtil {
 
     private var sNonCompatDensity = 0f
     private var sNonCompatScaledDensity = 0f
-    private var designWidth = 360 //设计图宽360dp
+    private var designWidth = 375 //设计图宽375dp
 
     fun setCustomDensity(activity: Activity, application: Application) {
         val appDisplayMetrics = application.resources.displayMetrics

@@ -1,5 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">也再</string>
-    <string name="please_wait">Please Wait</string>
-    <string name="app_will_finish_because_error">App will be close because of error</string>
+    <string name="please_wait">请稍后</string>
+    <string name="app_will_finish_because_error">应用遇到了错误即将停止运行</string>
+
+    <string name="tab_recommend">推荐</string>
+    <string name="tab_short_video">短视频</string>
+    <string name="tab_live_action">动态</string>
+    <string name="tab_message">消息</string>
+    <string name="tab_mine">我</string>
+    
+    <string name="tab_nearby">附近</string>
+    <string name="tab_concern">关注</string>
+    <string name="tab_hot">热门</string>
+    <string name="tab_team">小组</string>
+    <string name="tab_lover">情侣</string>
 </resources>

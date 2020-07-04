@@ -1,19 +1,17 @@
-package com.jywl.yezai.ui.content.main
+package com.jywl.yezai.ui.content.main.recommend
 
 import com.jywl.yezai.ui.content.BasePresenter
 import com.jywl.yezai.ui.content.BaseView
 
-/**
- * Created by Buzz on 2019/12/17.
- * Email :lmx2060918@126.com
- */
-interface MainContract {
+interface RecommendContract {
 
     interface View: BaseView {
-
+        fun testApiSuccess()
+        fun testApiFailed(message:String?)
     }
 
     interface Presenter: BasePresenter {
-
+        fun testApi(){}
     }
+
 }
