@@ -48,7 +48,7 @@ class HttpModule {
     @Singleton @Provides
     fun provideOkHttpClient(headerInterceptor: Interceptor): OkHttpClient {
         val logInterceptor:HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-            level = if (BuildConfig.showLog) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+            level = if (Constant.getIsShowLog()) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
         }
         val builder:OkHttpClient.Builder = OkHttpClient.Builder()
         return builder.readTimeout(DEFAULT_TIMEOUT.toLong(), TimeUnit.SECONDS)
@@ -76,7 +76,7 @@ class HttpModule {
     fun provideDefaultRemoteService(okHttpClient: OkHttpClient): ResApi {
         val retrofit:Retrofit = Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(Constant.getInterFaceUrl(BuildConfig.ENV_TYPE))
+                .baseUrl(Constant.getInterFaceUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
@@ -88,7 +88,7 @@ class HttpModule {
     fun provideRemoteServiceA(okHttpClient: OkHttpClient): ResApi {
         val retrofit:Retrofit = Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(Constant.getInterFaceUrl(BuildConfig.ENV_TYPE) + ":8082")
+                .baseUrl(Constant.getInterFaceUrl() + ":8082")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
@@ -99,7 +99,7 @@ class HttpModule {
     fun provideRemoteServiceB(okHttpClient: OkHttpClient): ResApi {
         val retrofit:Retrofit = Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(Constant.getInterFaceUrl(BuildConfig.ENV_TYPE) + ":8080")
+                .baseUrl(Constant.getInterFaceUrl() + ":8080")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()

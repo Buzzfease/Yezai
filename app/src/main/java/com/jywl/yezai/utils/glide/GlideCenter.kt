@@ -83,7 +83,7 @@ class GlideCenter {
                     return null
                 }
                 if (!url.startsWith("http")) {
-                    return Constant.getInterFaceUrl(BuildConfig.ENV_TYPE) + url
+                    return Constant.getInterFaceUrl() + url
                 }
             }
         }

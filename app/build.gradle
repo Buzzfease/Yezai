@@ -13,12 +13,12 @@ android {
         }
     }
 
-    compileSdkVersion 30
-    buildToolsVersion "30"
+    compileSdkVersion 29
+    buildToolsVersion "29"
     defaultConfig {
         applicationId "com.jywl.yezai"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         // 使用support.v8.renderscript
@@ -27,6 +27,11 @@ android {
         // 使用multiDex
         multiDexEnabled true
         flavorDimensions "defalut"
+
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'x86', 'armeabi-v7a' //, 'x86_64', 'arm64-v8a', 'armeabi'
+        }
     }
 
     sourceSets{
@@ -52,16 +57,12 @@ android {
         debug {
             minifyEnabled false
             shrinkResources false
-            // 显示Log
-            buildConfigField "boolean", "showLog", "true"
             signingConfig signingConfigs.release
         }
         release {
             minifyEnabled false
             shrinkResources false
             zipAlignEnabled true
-            // 不显示Log
-            buildConfigField "boolean", "showLog", "false"
             //混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
@@ -69,10 +70,10 @@ android {
     }
 
     productFlavors {
-        dev {
+        online {
             buildConfigField "int", "ENV_TYPE", "1"
         }
-        online {
+        dev {
             buildConfigField "int", "ENV_TYPE", "2"
         }
     }
@@ -87,6 +88,8 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$androidx_version"
     implementation "androidx.annotation:annotation:$androidx_version"
+    implementation "androidx.recyclerview:recyclerview:$androidx_version"
+    implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.core:core-ktx:$androidx_version"
 
     implementation(["io.reactivex.rxjava2:rxjava:$rxjava_version",
@@ -105,4 +108,10 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     //baseAdapter
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$adapter_version"
+    //timber log
+    implementation "com.jakewharton.timber:timber:$timber_version"
+    //饺子播放器
+    implementation 'cn.jzvd:jiaozivideoplayer:6.4.1'
+    //点赞按钮
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 }

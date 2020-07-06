@@ -10,6 +10,7 @@ import com.jywl.yezai.ui.content.main.message.MessageFragment
 import com.jywl.yezai.ui.content.main.mine.MineFragment
 import com.jywl.yezai.ui.content.main.recommend.RecommendFragment
 import com.jywl.yezai.ui.content.main.shortvideo.ShortVideoFragment
+import com.jywl.yezai.ui.content.main.shortvideo.tabs.ShortVideoTabFragment
 import dagger.Component
 
 @FragmentScope
@@ -28,4 +29,5 @@ interface FragmentComponent {
     fun inject(hotFragment: HotFragment)
     fun inject(teamFragment: TeamFragment)
     fun inject(loverFragment: LoverFragment)
+    fun inject(shortVideoTabFragment: ShortVideoTabFragment)
 }

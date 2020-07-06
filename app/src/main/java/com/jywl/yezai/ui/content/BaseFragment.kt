@@ -54,7 +54,7 @@ abstract class BaseFragment : RxFragment() {
 
     fun toast(content: String?) {
         if (!content.isNullOrEmpty()){
-            EasyToast.newBuilder(R.layout.view_toast, R.id.tvToast).build().show(content)
+            EasyToast.newBuilder(R.layout.layout_toast, R.id.tvToast).build().show(content)
         }
     }
 

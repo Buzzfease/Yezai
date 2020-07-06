@@ -1,5 +1,6 @@
 package com.jywl.yezai.ui.content.main
 
+import androidx.core.content.ContextCompat
 import com.jywl.yezai.R
 import com.jywl.yezai.ui.content.BaseMvpActivity
 import com.jywl.yezai.ui.content.main.liveaction.LiveActionFragment
@@ -7,6 +8,7 @@ import com.jywl.yezai.ui.content.main.message.MessageFragment
 import com.jywl.yezai.ui.content.main.mine.MineFragment
 import com.jywl.yezai.ui.content.main.recommend.RecommendFragment
 import com.jywl.yezai.ui.content.main.shortvideo.ShortVideoFragment
+import com.jywl.yezai.utils.EasyStatusBar
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -24,6 +26,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View{
     }
 
     override fun initViewAndEvent() {
+        EasyStatusBar.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white), true)
         initBottomBar()
         //EasyStatusBar.makeStatusBarTransparent(this, true, llM, avatar)
 

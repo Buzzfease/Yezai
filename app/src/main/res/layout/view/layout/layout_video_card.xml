@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardVideo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--视频缩略图-->
+        <RelativeLayout
+            android:id="@+id/rlVideo"
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+
+            <ImageView
+                android:id="@+id/ivVideoThumb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="@color/black"/>
+
+            <ImageView
+                android:id="@+id/ivBackground"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:alpha="0.25"/>
+
+            <ImageView
+                android:id="@+id/start"
+                android:layout_width="@dimen/jz_start_button_w_h_normal"
+                android:layout_height="@dimen/jz_start_button_w_h_normal"
+                android:layout_centerInParent="true"
+                android:src="@drawable/jz_click_play_selector" />
+
+            <LinearLayout
+                android:layout_width="55dp"
+                android:layout_height="21dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_video_card_prise">
+
+                <com.like.LikeButton
+                    android:id="@+id/likeButton"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="2dp"
+                    app:circle_end_color="@color/colorPrimary"
+                    app:circle_start_color="@color/colorPrimary"
+                    app:dots_primary_color="@color/colorPrimary"
+                    app:dots_secondary_color="@color/gray"
+                    app:icon_size="13dp"
+                    app:like_drawable="@mipmap/icon_duanshipin_like_after"
+                    app:unlike_drawable="@mipmap/icon_duanshipin_like_after" />
+
+                <TextView
+                    android:id="@+id/tvLikeCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="121">
+
+                </TextView>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!--用户信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="8dp">
+
+            <com.jywl.yezai.ui.widget.RoundImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="center"
+                android:src="@mipmap/ic_avatar"
+                app:borderWidth="1dp"
+                app:displayType="circle" />
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_marginStart="5dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColorBlack"
+                android:text="Chales"/>
+            
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="5dp"
+                android:background="@color/colorAccent"/>
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="5dp"
+                android:background="@color/colorAccent"/>
+
+        </LinearLayout>
+
+        <!--用户标签-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="8dp">
+            
+            <TextView
+                android:id="@+id/tvUserTag1"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textColor="@color/brown"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:background="@drawable/shape_video_card_user_tag"
+                android:text="有主见"/>
+
+            <TextView
+                android:id="@+id/tvUserTag2"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textColor="@color/brown"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:background="@drawable/shape_video_card_user_tag"
+                android:text="有主见"/>
+
+            <TextView
+                android:id="@+id/tvUserTag3"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textColor="@color/brown"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:background="@drawable/shape_video_card_user_tag"
+                android:text="有主见"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

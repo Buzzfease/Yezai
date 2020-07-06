@@ -15,7 +15,7 @@ object DialogFactory {
 
     fun getLoadingDialog(activity: Activity, msg: String? = MyApplication.instance().getString(R.string.please_wait)): Dialog {
         val dialog = Dialog(activity, R.style.LoadingDialog)
-        val contentView = LayoutInflater.from(activity).inflate(R.layout.view_dialog_loading, null)
+        val contentView = LayoutInflater.from(activity).inflate(R.layout.layout_dialog_loading, null)
         val aniImage = contentView.findViewById(R.id.ivLoading) as ImageView
         val msgView = contentView.findViewById(R.id.tvMessage) as TextView
         val ani = AnimationUtils.loadAnimation(activity, R.anim.loading_ani)

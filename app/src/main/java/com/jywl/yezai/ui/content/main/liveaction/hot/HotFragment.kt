@@ -2,7 +2,6 @@ package com.jywl.yezai.ui.content.main.liveaction.hot
 
 import com.jywl.yezai.R
 import com.jywl.yezai.ui.content.BaseMvpFragment
-import com.jywl.yezai.ui.content.main.liveaction.concern.ConcernFragment
 
 class HotFragment : BaseMvpFragment<HotPresenter>(),
     HotContract.View {

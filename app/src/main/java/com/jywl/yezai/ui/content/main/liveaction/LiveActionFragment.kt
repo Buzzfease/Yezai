@@ -27,7 +27,7 @@ class LiveActionFragment : BaseMvpFragment<LiveActionPresenter>(),
 
     private fun initTabs(){
         val mTitles: Array<String> = arrayOf(getString(R.string.tab_nearby),getString(R.string.tab_concern),getString(R.string.tab_hot),getString(R.string.tab_team),getString(R.string.tab_lover))
-        val mStripAdapter = FragmentStripAdapter(childFragmentManager, mTitles)
+        val mStripAdapter = LiveActionStripAdapter(childFragmentManager, mTitles)
         viewPager?.adapter = mStripAdapter
         viewPager?.offscreenPageLimit = mTitles.size
         tabStrip?.run {

@@ -4,15 +4,24 @@
     <string name="please_wait">请稍后</string>
     <string name="app_will_finish_because_error">应用遇到了错误即将停止运行</string>
 
+    <!--首页底部导航页面名称-->
     <string name="tab_recommend">推荐</string>
     <string name="tab_short_video">短视频</string>
     <string name="tab_live_action">动态</string>
     <string name="tab_message">消息</string>
     <string name="tab_mine">我</string>
-    
+    <!--动态页顶部导航栏页面名称-->
     <string name="tab_nearby">附近</string>
     <string name="tab_concern">关注</string>
     <string name="tab_hot">热门</string>
     <string name="tab_team">小组</string>
     <string name="tab_lover">情侣</string>
+    <!--短视频页面导航栏页面名称-->
+    <string name="tab_short_video_recommend">推荐</string>
+    <string name="tab_short_video_concern">关注</string>
+    <string name="tab_short_video_hot">热门</string>
+    <!--短视频推荐页面顶部分类-->
+    <string name="type_secret_voice">密语</string>
+    <string name="type_school">学堂</string>
+    <string name="type_random_relation">随缘速配</string>
 </resources>

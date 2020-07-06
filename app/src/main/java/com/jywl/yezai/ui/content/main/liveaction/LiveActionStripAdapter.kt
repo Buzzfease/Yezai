@@ -9,7 +9,7 @@ import com.jywl.yezai.ui.content.main.liveaction.lover.LoverFragment
 import com.jywl.yezai.ui.content.main.liveaction.nearby.NearByFragment
 import com.jywl.yezai.ui.content.main.liveaction.team.TeamFragment
 
-class FragmentStripAdapter(fm: FragmentManager, private val titles: Array<String>) : FragmentStatePagerAdapter(fm) {
+class LiveActionStripAdapter(fm: FragmentManager, private val titles: Array<String>) : FragmentStatePagerAdapter(fm) {
 
 
     private var mViews = 0

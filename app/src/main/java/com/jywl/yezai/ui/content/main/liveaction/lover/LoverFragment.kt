@@ -2,7 +2,6 @@ package com.jywl.yezai.ui.content.main.liveaction.lover
 
 import com.jywl.yezai.R
 import com.jywl.yezai.ui.content.BaseMvpFragment
-import com.jywl.yezai.ui.content.main.liveaction.nearby.NearByFragment
 
 class LoverFragment : BaseMvpFragment<LoverPresenter>(),
     LoverContract.View {

@@ -19,4 +19,66 @@
             <enum name="text" value="1"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <!-- Border width -->
+        <attr name="borderWidth" format="dimension" />
+        <!-- Border color -->
+        <attr name="borderColor" format="color" />
+        <!-- Whether to show the border line -->
+        <attr name="displayBorder" format="boolean" />
+        <!-- The radius of the round corner USES this property first -->
+        <attr name="radius" format="dimension" />
+        <!-- Upper left corner radius -->
+        <attr name="leftTopRadius" format="dimension" />
+        <!-- The radius of the arc in the upper right corner -->
+        <attr name="rightTopRadius" format="dimension" />
+        <!-- The radius of the arc in the lower left corner -->
+        <attr name="leftBottomRadius" format="dimension" />
+        <!-- The radius of the arc in the lower right corner -->
+        <attr name="rightBottomRadius" format="dimension" />
+        <!-- Display Type -->
+        <attr name="displayType" format="enum">
+            <!-- Rectangle -->
+            <enum name="normal" value="0" />
+            <!-- circle -->
+            <enum name="circle" value="1" />
+            <!-- Rounded Rectangle -->
+            <enum name="round_rect" value="2" />
+        </attr>
+        <!--Display lables-->
+        <attr name="displayLable" format="boolean" />
+<!--        &lt;!&ndash;The lable text&ndash;&gt;-->
+<!--        <attr name="text" />-->
+<!--        &lt;!&ndash;The lable background&ndash;&gt;-->
+<!--        <attr name="lableBackground" format="color" />-->
+<!--        &lt;!&ndash;The lable text color&ndash;&gt;-->
+<!--        <attr name="textColor" />-->
+<!--        &lt;!&ndash;The lable width&ndash;&gt;-->
+<!--        <attr name="lableWidth" format="dimension" />-->
+<!--        &lt;!&ndash;The lable text size&ndash;&gt;-->
+<!--        <attr name="textSize" />-->
+        <!--Distance start location margin-->
+        <attr name="startMargin" format="dimension" />
+        <!--The lable typeface(normal, sans, serif, monospace)-->
+        <attr name="typeface">
+            <enum name="normal" value="0" />
+            <enum name="sans" value="1" />
+            <enum name="serif" value="2" />
+            <enum name="monospace" value="3" />
+        </attr>
+        <!-- Style (bold, italic, bolditalic) for the text. -->
+        <attr name="textStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <!--Label display location-->
+        <attr name="lableGravity" format="enum">
+            <enum name="leftTop" value="0" />
+            <enum name="leftBottom" value="1" />
+            <enum name="rightTop" value="2" />
+            <enum name="rightBottom" value="3" />
+        </attr>
+    </declare-styleable>
 </resources>

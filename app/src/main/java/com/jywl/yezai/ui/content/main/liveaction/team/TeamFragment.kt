@@ -2,7 +2,6 @@ package com.jywl.yezai.ui.content.main.liveaction.team
 
 import com.jywl.yezai.R
 import com.jywl.yezai.ui.content.BaseMvpFragment
-import com.jywl.yezai.ui.content.main.liveaction.lover.LoverFragment
 
 class TeamFragment : BaseMvpFragment<TeamPresenter>(),
     TeamContract.View {

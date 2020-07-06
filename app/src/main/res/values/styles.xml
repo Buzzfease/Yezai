@@ -22,8 +22,8 @@
     </style>
 
     <style name="TabPagerStrip">
-        <item name="android:background">@color/transparent</item>
-        <item name="apTabBackground">@drawable/shape_tab_bg_transparent</item>
+        <item name="android:background">@color/white</item>
+        <item name="apTabBackground">@drawable/shape_tab_bg_white</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textAppearance">@style/CustomTabPageIndicator.Text</item>
         <item name="android:textColor">@color/textColorBlack</item>
@@ -34,10 +34,10 @@
         <item name="apTabShouldExpand">false</item>
         <item name="apTabPaddingLeftRight">16dp</item>
         <item name="apTabDrawMode">text</item>
-        <item name="apTabTextSelectColor">@color/white</item>
+        <item name="apTabTextSelectColor">@color/textColorBlack</item>
     </style>
 
-    <style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Medium">
+    <style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Large">
         <item name="android:typeface">monospace</item>
     </style>
 

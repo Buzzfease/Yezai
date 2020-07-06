@@ -2,7 +2,7 @@ package com.jywl.yezai
 
 import android.app.Application
 import com.jywl.yezai.di.*
-import com.jywl.yezai.utils.EasyLog
+import timber.log.Timber
 
 
 /**
@@ -24,9 +24,11 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+
         //开启关闭Log
-        EasyLog.DEFAULT.enable = Constant.getIsShowLog(BuildConfig.ENV_TYPE)
-        //捕获Crash,解决多任务栈程序崩溃后启动的问题
+        if (Constant.getIsShowLog()) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
     private fun initDependency(){
