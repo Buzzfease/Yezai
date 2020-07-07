@@ -1,6 +1,10 @@
 package com.jywl.yezai.utils
 
 import android.content.Context
+import android.view.View
+import android.view.ViewParent
+import android.widget.FrameLayout
+
 
 /**
  * created by Buzz
@@ -22,5 +26,16 @@ object DisplayUtil {
     fun px2dip(context: Context, pxValue: Float): Int {
         val scale: Float = context.resources.displayMetrics.density
         return (pxValue / scale + 0.5f).toInt()
+    }
+
+    /**
+     * 将View从父控件中移除
+     */
+    fun removeViewFormParent(v: View?) {
+        if (v == null) return
+        val parent: ViewParent? = v.parent
+        if (parent != null && parent is FrameLayout) {
+            parent.removeView(v)
+        }
     }
 }

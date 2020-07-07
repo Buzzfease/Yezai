@@ -1,116 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rlMain"
-    android:background="@color/black"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--视频部分-->
-    <com.jywl.yezai.ui.widget.DoyYinVideoView
-        android:id="@+id/videoView"
+    <com.jywl.yezai.ui.widget.TikTokView
+        android:id="@+id/tiktok_View"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <!--右侧工具栏-->
-    <LinearLayout
-        android:id="@+id/ll_right"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="180dp"
-        android:orientation="vertical">
-
-        <!--点赞-->
-        <LinearLayout
-            android:id="@+id/ll_like_button"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_marginBottom="5dp">
-
-            <com.like.LikeButton
-                android:id="@+id/like_button"
-                android:layout_gravity="center"
-                app:icon_size="36dp"
-                app:like_drawable="@mipmap/icon_duanshipin_like_after"
-                app:unlike_drawable="@mipmap/icon_duanshipin_like_after"
-                app:circle_start_color="@color/colorPrimary"
-                app:circle_end_color="@color/colorPrimary"
-                app:dots_primary_color="@color/colorPrimary"
-                app:dots_secondary_color="@color/gray"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/tv_like_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/white"
-                android:layout_gravity="center_horizontal" />
-
-        </LinearLayout>
-
-        <!--评论-->
-        <LinearLayout
-            android:id="@+id/ll_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_marginBottom="5dp">
-
-            <ImageView
-                android:id="@+id/iv_comment"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/icon_duanshipin_comment"/>
-
-            <TextView
-                android:id="@+id/tv_comment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textSize="12sp"
-                android:textColor="@color/white"
-                android:text="0"
-                android:layout_gravity="center_horizontal" />
-
-        </LinearLayout>
-
-        <!--分享-->
-        <LinearLayout
-            android:id="@+id/ll_share"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_marginBottom="5dp">
-
-            <ImageView
-                android:id="@+id/iv_share"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/icon_duanshipin_share"/>
-
-            <TextView
-                android:id="@+id/tv_share"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textSize="12sp"
-                android:textColor="@color/white"
-                android:text="0"
-                android:layout_gravity="center_horizontal" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</RelativeLayout>
+</FrameLayout>

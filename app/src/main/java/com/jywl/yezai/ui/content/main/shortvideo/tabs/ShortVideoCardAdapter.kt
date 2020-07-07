@@ -30,7 +30,6 @@ class ShortVideoCardAdapter : BaseMultiItemQuickAdapter<MultiTypeItem<Any>, Base
 
     override fun convert(helper: BaseViewHolder, item: MultiTypeItem<Any>?) {
         val bean = item?.getData() as VideoListBean
-        var likeCount = bean.likeCount
         when(item.itemType){
             ITEM_VIDEO_CARD ->{
                 val cardVideo = helper.getView<CardView>(R.id.cardVideo)
@@ -38,6 +37,8 @@ class ShortVideoCardAdapter : BaseMultiItemQuickAdapter<MultiTypeItem<Any>, Base
                     onVideoCardClickListener?.onVideoCardClick(helper.adapterPosition)
                 }
                 val tvLikeCount = helper.getView<TextView>(R.id.tvLikeCount)
+                var likeCount = bean.likeCount
+                tvLikeCount.text = likeCount.toString()
                 val ivVideoThumb = helper.getView<ImageView>(R.id.ivVideoThumb)
                 GlideCenter.get().showCrossFadeImage(ivVideoThumb, bean.videoThumb)
                 val ivAvatar = helper.getView<RoundImageView>(R.id.ivAvatar)

@@ -24,4 +24,6 @@
     <string name="type_secret_voice">密语</string>
     <string name="type_school">学堂</string>
     <string name="type_random_relation">随缘速配</string>
+    <!--app通用-->
+    <string name="concern">关注</string>
 </resources>

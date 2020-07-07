@@ -1,6 +1,9 @@
 package com.jywl.yezai
 
 import android.app.Application
+import com.dueeeke.videoplayer.exo.ExoMediaPlayerFactory
+import com.dueeeke.videoplayer.player.VideoViewConfig
+import com.dueeeke.videoplayer.player.VideoViewManager
 import com.jywl.yezai.di.*
 import timber.log.Timber
 
@@ -29,6 +32,12 @@ class MyApplication : Application() {
         if (Constant.getIsShowLog()) {
             Timber.plant(Timber.DebugTree())
         }
+        //播放器核心
+        VideoViewManager.setConfig(
+            VideoViewConfig.newBuilder()
+            //使用ExoPlayer解码
+            .setPlayerFactory(ExoMediaPlayerFactory.create())
+            .build());
     }
 
     private fun initDependency(){

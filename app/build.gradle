@@ -110,8 +110,12 @@ dependencies {
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$adapter_version"
     //timber log
     implementation "com.jakewharton.timber:timber:$timber_version"
-    //饺子播放器
-    implementation 'cn.jzvd:jiaozivideoplayer:6.4.1'
+    //dk播放器
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-java:3.2.6'
+    //exo解码器
+    implementation 'com.github.dueeeke.dkplayer:player-exo:3.2.6'
+    //如需要缓存或者抖音预加载功能请引入此库
+    implementation 'com.github.dueeeke.dkplayer:videocache:3.2.6'
     //点赞按钮
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 }
