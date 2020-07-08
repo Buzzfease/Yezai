@@ -149,6 +149,8 @@ class VideoPlayActivity :BaseMvpActivity<VideoPlayPresenter>(), VideoPlayContrac
 
     override fun onDestroy() {
         super.onDestroy()
+        mVideoView?.release()
+        mVideoView = null
         mPreloadManager!!.removeAllPreloadTask()
         //清除缓存，实际使用可以不需要清除，这里为了方便测试
         ProxyVideoCacheManager.clearAllCache(this)

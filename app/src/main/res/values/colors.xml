@@ -5,9 +5,13 @@
     <color name="half_transparent">#50000000</color>
     <color name="colorPrimary">#FE676E</color>
     <color name="textColorBlack">#42475C</color>
+    <color name="textColorGrey">#666978</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="gray">#B8B8B8</color>
+    <color name="light_grey">#F8F8F8</color>
     <color name="brown">#FFC2A7</color>
     <color name="light_brown">#FFF3EE</color>
+    <color name="deep_purple">#343E59</color>
+    <color name="black_purple">#2E324A</color>
 </resources>

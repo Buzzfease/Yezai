@@ -4,14 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true"
-        android:textSize="80sp"
-        android:textColor="@color/colorAccent"
-        android:text="消息">
+    <LinearLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </TextView>
+        <com.jywl.yezai.ui.widget.TinderStackLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tinderStackLayout" />
+
+    </LinearLayout>
 
 </RelativeLayout>

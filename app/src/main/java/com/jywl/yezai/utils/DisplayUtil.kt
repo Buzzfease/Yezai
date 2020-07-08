@@ -3,6 +3,7 @@ package com.jywl.yezai.utils
 import android.content.Context
 import android.view.View
 import android.view.ViewParent
+import android.view.WindowManager
 import android.widget.FrameLayout
 
 
@@ -28,6 +29,11 @@ object DisplayUtil {
         return (pxValue / scale + 0.5f).toInt()
     }
 
+    fun sp2px(context: Context, sp: Int): Int {
+        val density = context.resources.displayMetrics.scaledDensity
+        return (sp * density + 0.5f).toInt()
+    }
+
     /**
      * 将View从父控件中移除
      */
@@ -37,5 +43,14 @@ object DisplayUtil {
         if (parent != null && parent is FrameLayout) {
             parent.removeView(v)
         }
+    }
+
+    /**
+     * 获取屏幕宽度
+     */
+    fun getScreenWidth(context: Context): Int {
+        val wm = context
+            .getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        return wm.defaultDisplay.width
     }
 }
