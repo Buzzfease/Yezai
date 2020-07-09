@@ -64,7 +64,7 @@ android {
             shrinkResources false
             zipAlignEnabled true
             //混淆
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
     }
@@ -118,4 +118,9 @@ dependencies {
     implementation 'com.github.dueeeke.dkplayer:videocache:3.2.6'
     //点赞按钮
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
+    //图片选择器
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.8'
+    //权限框架
+    implementation 'com.yanzhenjie:permission:2.0.3'
+
 }

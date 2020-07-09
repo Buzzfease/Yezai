@@ -3,11 +3,21 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.jywl.yezai.ui.widget.PagerSlidingTabStrip
-        android:id="@+id/tabStrip"
-        style="@style/TabPagerStrip"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal">
+
+        <com.jywl.yezai.ui.widget.PagerSlidingTabStrip
+            android:id="@+id/tabStrip"
+            style="@style/TabPagerStrip"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

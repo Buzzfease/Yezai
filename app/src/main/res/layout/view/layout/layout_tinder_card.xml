@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp"
     android:layout_gravity="top">
 
     <ScrollView
@@ -21,8 +21,7 @@
             <!--第一屏卡片-->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="600dp"
-                app:cardCornerRadius="25dp">
+                android:layout_height="600dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -164,7 +163,7 @@
             </androidx.cardview.widget.CardView>
 
 
-            <!--第二屏资料347-->
+            <!--第二屏资料-->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -274,30 +273,31 @@
 
                     </LinearLayout>
 
+                    <!--动态图片三宫格-->
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="225dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="225dp"
-                            android:layout_height="225dp"
+                        <com.jywl.yezai.ui.widget.SquareImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:scaleType="centerCrop"
                             android:src="@mipmap/ic_avatar"/>
 
-
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="225dp"
-                            android:layout_marginStart="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <ImageView
+                            <com.jywl.yezai.ui.widget.SquareImageView
                                 android:layout_width="110dp"
                                 android:layout_height="110dp"
                                 android:src="@mipmap/ic_avatar"/>
 
-                            <ImageView
+                            <com.jywl.yezai.ui.widget.SquareImageView
                                 android:layout_width="110dp"
                                 android:layout_height="110dp"
                                 android:layout_marginTop="5dp"
@@ -716,10 +716,11 @@
                     android:layout_marginTop="23dp"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <com.jywl.yezai.ui.widget.RoundImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/shape_xiaozu_radius"
+                        app:displayType="round_rect"
+                        app:radius="4dp"
                         android:src="@mipmap/ic_default_circle_avatar"/>
 
                     <TextView

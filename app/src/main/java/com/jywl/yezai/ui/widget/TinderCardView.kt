@@ -15,8 +15,7 @@ import com.jywl.yezai.MyApplication
 import com.jywl.yezai.R
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.utils.DisplayUtil
-import kotlinx.android.synthetic.main.layout_tantan_cardview.view.*
-import timber.log.Timber
+import kotlinx.android.synthetic.main.layout_tinder_card.view.*
 
 /**
  * created by Buzz
@@ -45,7 +44,7 @@ class TinderCardView @JvmOverloads constructor(
 
     fun init(context: Context) {
         if (!isInEditMode) {
-            View.inflate(context, R.layout.layout_tantan_cardview, this)
+            View.inflate(context, R.layout.layout_tinder_card, this)
             screenWidth = DisplayUtil.getScreenWidth(context)
             leftBoundary = screenWidth * (1.0f / 6.0f) //是否左滑的边界
             rightBoundary = screenWidth * (5.0f / 6.0f) //是否右滑的边界
