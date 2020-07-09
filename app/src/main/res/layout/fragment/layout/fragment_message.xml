@@ -4,17 +4,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/activity_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <com.jywl.yezai.ui.widget.TinderStackLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tinderStackLayout" />
-
-    </LinearLayout>
 
 </RelativeLayout>

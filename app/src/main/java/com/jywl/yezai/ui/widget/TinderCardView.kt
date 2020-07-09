@@ -10,12 +10,12 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.core.content.ContextCompat
+import com.jywl.yezai.MyApplication
 import com.jywl.yezai.R
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.utils.DisplayUtil
-import com.jywl.yezai.utils.glide.GlideCenter
+import kotlinx.android.synthetic.main.layout_tantan_cardview.view.*
 import timber.log.Timber
 
 /**
@@ -30,9 +30,7 @@ class TinderCardView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr), OnTouchListener {
-    private var iv: ImageView? = null
-    private var tv_name: TextView? = null
-    private var iv_tips: ImageView? = null
+
     private var padding = 0
     private var downX = 0f
     private var downY = 0f
@@ -51,11 +49,10 @@ class TinderCardView @JvmOverloads constructor(
             screenWidth = DisplayUtil.getScreenWidth(context)
             leftBoundary = screenWidth * (1.0f / 6.0f) //是否左滑的边界
             rightBoundary = screenWidth * (5.0f / 6.0f) //是否右滑的边界
-            iv = findViewById<View>(R.id.iv) as ImageView
-            tv_name = findViewById<View>(R.id.tv_name) as TextView
-            iv_tips = findViewById<View>(R.id.iv_tips) as ImageView
             padding = DisplayUtil.dip2px(context, PADDINGVALUE)
             setOnTouchListener(this)
+            initUserDataTagView()
+            initUserTargetTagView()
         }
     }
 
@@ -68,7 +65,7 @@ class TinderCardView @JvmOverloads constructor(
             MotionEvent.ACTION_DOWN -> {
                 downX = x
                 downY = y
-                Timber.e("ACTION_DOWN    " + downX)
+                //Timber.e("ACTION_DOWN    " + downX)
             }
             MotionEvent.ACTION_MOVE -> {
                 val deltaX: Float = Math.abs(x - downX)
@@ -100,29 +97,30 @@ class TinderCardView @JvmOverloads constructor(
                     newX = motionEvent.x
                     newY = motionEvent.y
                     dX = newX - downX //手指移动距离
-                    Timber.e("ACTION_MOVE    " + newX)
+                    //Timber.e("ACTION_MOVE    " + newX)
                     dY = newY - downY
                     val posX = view.getX() + dX
                     view.setX(view.getX() + dX) //view的新距离 需求1，卡片随手指的移动而移动
                     //view.setY(view.getY() + dY)//新需求，只移动x坐标
 
 
-                    val rotation =
-                        CARD_ROTATION_DEGREES * posX / screenWidth
+                    //设置View在Z轴上的旋转角度 需求2，卡片移动过程中，随距离的增大而，选择角度增大
+                    val rotation = CARD_ROTATION_DEGREES * posX / screenWidth
                     val halfCardHeight = view.getHeight() / 2
                     if (downY < halfCardHeight - 2 * padding) {
-                        view.setRotation(rotation) //设置View在Z轴上的旋转角度 需求2，卡片移动过程中，随距离的增大而，选择角度增大
+                        view.setRotation(rotation)
                     } else {
                         view.setRotation(-rotation)
                     }
-                    val alpha = (posX - padding) / (screenWidth * 0.3f)
-                    if (alpha > 0) { //需求3, 判断手指的移动方向，显示选择/删除图标，同时图标随距离的增大，透明度增加
-                        iv_tips!!.alpha = alpha
-                        iv_tips!!.setImageResource(R.mipmap.icon_dianzan)
-                    } else {
-                        iv_tips!!.alpha = -alpha
-                        iv_tips!!.setImageResource(R.mipmap.icon_tese)
-                    }
+                    //需求3, 判断手指的移动方向，显示选择/删除图标，同时图标随距离的增大，透明度增加
+//                    val alpha = (posX - padding) / (screenWidth * 0.3f)
+//                    if (alpha > 0) {
+//                        iv_tips!!.alpha = alpha
+//                        iv_tips!!.setImageResource(R.mipmap.icon_dianzan)
+//                    } else {
+//                        iv_tips!!.alpha = -alpha
+//                        iv_tips!!.setImageResource(R.mipmap.icon_tese)
+//                    }
                     true
                 }
                 MotionEvent.ACTION_UP -> {
@@ -159,12 +157,10 @@ class TinderCardView @JvmOverloads constructor(
                 override fun onAnimationStart(animator: Animator) {}
                 override fun onAnimationEnd(animator: Animator) { //移出后回调
                     val viewGroup = view.parent as ViewGroup
-                    if (viewGroup != null) {
-                        viewGroup.removeView(view)
-                        val count = viewGroup.childCount //需求5，增加新卡片
-                        if (count == 1 && listener != null) {
-                            listener!!.onLoad()
-                        }
+                    viewGroup.removeView(view)
+                    val count = viewGroup.childCount //需求5，增加新卡片
+                    if (count == 1 && listener != null) {
+                        listener!!.onLoad()
                     }
                 }
 
@@ -179,14 +175,35 @@ class TinderCardView @JvmOverloads constructor(
             .y(0f) //y轴移动
             .rotation(0f) //循环次数
             .setInterpolator(OvershootInterpolator()).duration = DURATIONTIME.toLong()
-        iv_tips!!.alpha = 0f //图标隐藏
+        //iv_tips!!.alpha = 0f //图标隐藏
     }
 
-    fun bind(u: UserBean?) {  //view加载数据
-        //加载图片 加载名字
-        GlideCenter.get().showImage(iv, u?.userAvatar)
-        tv_name?.text = u?.userName
+    fun bind(u: UserBean?) {
+        //加载用户信息
+    }
 
+    private fun initUserDataTagView(){
+        val array = arrayOf("未婚","26岁","天枰座","162cm","48KG","工作地：西安雁塔区","月收入：5-8千","大学本科")
+        tagViewUserData!!.datas(array)
+            //下面的5个方法若不设置，则会采用默认值
+            .textColor(ContextCompat.getColor(MyApplication.instance(), R.color.textColorGrey), ContextCompat.getColor(MyApplication.instance(), R.color.textColorGrey))
+            .textSize(DisplayUtil.sp2px(MyApplication.instance(), 14))
+            .backgroundColor(ContextCompat.getColor(MyApplication.instance(), R.color.gray), ContextCompat.getColor(MyApplication.instance(), R.color.gray))
+            .itemHeight(DisplayUtil.dip2px(MyApplication.instance(),25f))
+            .padding(DisplayUtil.dip2px(MyApplication.instance(), 18f), DisplayUtil.dip2px(MyApplication.instance(), 10f), DisplayUtil.dip2px(MyApplication.instance(), 8f))
+            .commit()
+    }
+
+    private fun initUserTargetTagView(){
+        val array = arrayOf("未婚","26-35岁","未婚","没有孩子","48KG","工作地：西安雁塔区","月收入：5-8千","大学本科")
+        tagViewTargetCondition!!.datas(array)
+            //下面的5个方法若不设置，则会采用默认值
+            .textColor(ContextCompat.getColor(MyApplication.instance(), R.color.textColorGrey), ContextCompat.getColor(MyApplication.instance(), R.color.textColorGrey))
+            .textSize(DisplayUtil.sp2px(MyApplication.instance(), 14))
+            .backgroundColor(ContextCompat.getColor(MyApplication.instance(), R.color.gray), ContextCompat.getColor(MyApplication.instance(), R.color.gray))
+            .itemHeight(DisplayUtil.dip2px(MyApplication.instance(),25f))
+            .padding(DisplayUtil.dip2px(MyApplication.instance(), 18f), DisplayUtil.dip2px(MyApplication.instance(), 10f), DisplayUtil.dip2px(MyApplication.instance(), 8f))
+            .commit()
     }
 
     interface OnLoadMoreListener {

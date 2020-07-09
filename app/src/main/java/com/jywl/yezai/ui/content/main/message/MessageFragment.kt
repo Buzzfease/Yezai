@@ -22,14 +22,6 @@ class MessageFragment : BaseMvpFragment<MessagePresenter>(),
     }
 
     override fun initEventView() {
-        init()
     }
 
-    private fun init() {
-        val mList = ArrayList<UserBean>()
-        repeat(5){
-            mList.add(UserBean("https://api.xygeng.cn/Bing/", "Buzz"))
-        }
-        tinderStackLayout.setDatas(mList)
-    }
 }

@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.ui.widget.TinderCardView.OnLoadMoreListener
 import com.jywl.yezai.utils.DisplayUtil
+import timber.log.Timber
 
 /**
  * created by Buzz
@@ -27,14 +28,21 @@ class TinderStackLayout @JvmOverloads constructor(
     private var scaleY = 0
     private var tc: TinderCardView? = null
     private var mList: List<UserBean>? = null
+    private var onStackLoadMoreListenr:OnStackLoadMoreListener? = null
 
-    fun init() {
+    fun setOnStackLoadMoreListener(listener: OnStackLoadMoreListener?) {
+        this.onStackLoadMoreListenr = listener
+    }
+
+    private fun init() {
         params = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
         scaleY = DisplayUtil.dip2px(context, BASESCALE_Y_VALUE.toFloat())
     }
+
+
 
     private fun addCard(view: TinderCardView) {
         val count = childCount
@@ -63,19 +71,24 @@ class TinderStackLayout @JvmOverloads constructor(
     }
 
     override fun onLoad() {
-        run {
-            val i = index
-            while (index < i + (STACK_SIZE - 1)) {
-                if (index == mList!!.size) {
-                    return
-                }
-                tc = TinderCardView(context)
-                tc!!.bind(mList!![index])
-                tc!!.setOnLoadMoreListener(this)
-                addCard(tc!!)
-                index++
-            }
-        }
+        Timber.e("stackOnLoadMore is called")
+//        run {
+//            val i = index
+//            while (index < i + (STACK_SIZE - 1)) {
+//                if (index == mList!!.size) {
+//                    return
+//                }
+//                tc = TinderCardView(context)
+//                tc!!.bind(mList!![index])
+//                tc!!.setOnLoadMoreListener(this)
+//                addCard(tc!!)
+//                index++
+//            }
+//        }
+
+        onStackLoadMoreListenr?.onStackLoadMore()
+
+
 //        val childCount = childCount
 //        for (i in childCount - 1 downTo 0) {
 //            val tinderCardView = getChildAt(i) as TinderCardView
@@ -95,6 +108,10 @@ class TinderStackLayout @JvmOverloads constructor(
         const val BASESCALE_Y_VALUE = 8
         const val DURATIONTIME = 300
         private const val STACK_SIZE = 5
+    }
+
+    interface OnStackLoadMoreListener{
+        fun onStackLoadMore()
     }
 
     init {
