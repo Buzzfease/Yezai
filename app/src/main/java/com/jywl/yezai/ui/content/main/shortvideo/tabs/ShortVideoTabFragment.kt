@@ -110,7 +110,7 @@ class ShortVideoTabFragment :BaseMvpFragment<ShortVideoTabPresenter>(),
 
         //initAdapter
         mAdapter.run {
-            if (params == 1) mAdapter.addHeaderView(selectHeader) else mAdapter.addHeaderView(playHeader)
+            if (params == 1) addHeaderView(selectHeader) else addHeaderView(playHeader)
             setEnableLoadMore(true)
             setPreLoadNumber(0)
             setOnLoadMoreListener(this@ShortVideoTabFragment, recyclerView)

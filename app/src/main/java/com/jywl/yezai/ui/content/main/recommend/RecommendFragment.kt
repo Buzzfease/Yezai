@@ -1,12 +1,9 @@
 package com.jywl.yezai.ui.content.main.recommend
 
-import androidx.core.content.ContextCompat
 import com.jywl.yezai.R
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.ui.content.BaseMvpFragment
-import com.jywl.yezai.ui.widget.FlowTagView
 import com.jywl.yezai.ui.widget.TinderStackLayout
-import com.jywl.yezai.utils.DisplayUtil
 import kotlinx.android.synthetic.main.fragment_recommend.*
 
 class RecommendFragment : BaseMvpFragment<RecommendPresenter>(),

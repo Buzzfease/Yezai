@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal">
+
+        <com.jywl.yezai.ui.widget.RoundImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@mipmap/ic_default_circle_avatar"
+            app:displayType="circle"
+            app:borderWidth="1dp"
+            app:borderColor="@color/textColorGrey"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:src="@mipmap/con_guanzhu"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/textColorBlack"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:text="清音"/>
+
+    <TextView
+        android:id="@+id/userDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/textColorGrey"
+        android:layout_gravity="center_horizontal"
+        android:textSize="12sp"
+        android:text="西安 | 35岁"/>
+
+</LinearLayout>

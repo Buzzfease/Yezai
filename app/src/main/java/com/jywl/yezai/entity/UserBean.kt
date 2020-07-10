@@ -10,6 +10,6 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class UserBean(
-    val userAvatar:String,
-    val userName:String
+    var userAvatar:String,
+    var userName:String
 ):Parcelable
