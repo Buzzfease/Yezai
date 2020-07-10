@@ -32,14 +32,14 @@ class GlideModule {
     @Provides
     @Named("placeHolder")
     fun providePlaceHolder(@Named("basic") options: RequestOptions): RequestOptions{
-        return options.placeholder(R.mipmap.ic_launcher)
+        return options.placeholder(R.drawable.picture_image_placeholder)
     }
 
     @Singleton
     @Provides
     @Named("errorRes")
     fun provideErrorRes(@Named("placeHolder") options: RequestOptions): RequestOptions{
-        return options.error(R.mipmap.ic_launcher)
+        return options.error(R.drawable.picture_image_placeholder)
     }
 
     @Singleton

@@ -5,22 +5,22 @@ import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
-public class SquareImageView extends AppCompatImageView {
+public class WidthSquareImageView extends AppCompatImageView {
 
     private float hwRatio = 1f;
     private static final String key_hwRatio = "hwRatio";
 
-    public SquareImageView(Context context) {
+    public WidthSquareImageView(Context context) {
         super(context);
         setAttributes(context, null);
     }
 
-    public SquareImageView(Context context, AttributeSet attrs) {
+    public WidthSquareImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setAttributes(context, attrs);
     }
 
-    public SquareImageView(Context context, AttributeSet attrs, int defStyle) {
+    public WidthSquareImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setAttributes(context, attrs);
     }
@@ -39,23 +39,25 @@ public class SquareImageView extends AppCompatImageView {
         int height = getMeasuredHeight();
 
         //定高度宽度对齐
-        int calculatedWidth = calculateWidthByRatio(height);
-        if (calculatedWidth != width){
-            setMeasuredDimension(calculatedWidth, height);
-        }
+//        int calculatedWidth = calculateWidthByRatio(height);
+//        if (calculatedWidth != width){
+//            setMeasuredDimension(calculatedWidth, height);
+//        }
 
         //定宽度高度对齐
-//        int calculatedHeight = calculateHeightByRatio(width);
-//
-//        if (calculatedHeight != height) {
-//            setMeasuredDimension(width, calculatedHeight);
-//        }
+        int calculatedHeight = calculateHeightByRatio(width);
+
+        if (calculatedHeight != height) {
+            setMeasuredDimension(width, calculatedHeight);
+        }
 
     }
 
     private int calculateWidthByRatio(int height) {
         return (int) (hwRatio * (float) height);
     }
+
+    private int calculateHeightByRatio(int width) { return (int) (hwRatio * (float) width); }
 
     public float getHwRatio() {
         return hwRatio;

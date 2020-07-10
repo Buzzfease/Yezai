@@ -15,6 +15,7 @@ import com.jywl.yezai.ui.content.BaseMvpFragment
 import com.jywl.yezai.ui.content.main.shortvideo.ShortVideoFragment
 import com.jywl.yezai.ui.content.videoplay.VideoPlayActivity
 import com.jywl.yezai.ui.widget.SpacesItemDecoration
+import com.luck.picture.lib.decoration.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_short_video_tabs.*
 import timber.log.Timber
 

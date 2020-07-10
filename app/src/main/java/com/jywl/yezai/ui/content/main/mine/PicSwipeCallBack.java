@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.jywl.yezai.MyApplication;
-import com.jywl.yezai.ui.widget.PreviewSelectAdapter;
+import com.jywl.yezai.ui.content.main.liveaction.PreviewSelectAdapter;
 import com.jywl.yezai.utils.DisplayUtil;
 
 import java.util.Collections;

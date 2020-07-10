@@ -25,14 +25,14 @@
             android:layout_height="24dp"
             android:layout_marginEnd="20dp"
             android:layout_gravity="center_vertical"
-            android:background="@color/colorAccent"/>
+            android:src="@mipmap/icon_paihangbang"/>
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="20dp"
             android:layout_gravity="center_vertical"
-            android:background="@color/colorAccent"/>
+            android:src="@mipmap/icon_guanzhu"/>
 
     </LinearLayout>
 

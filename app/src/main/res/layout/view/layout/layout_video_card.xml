@@ -106,13 +106,13 @@
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="5dp"
-                android:background="@color/colorAccent"/>
+                android:src="@mipmap/icon_huiyuan" />
 
             <ImageView
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="5dp"
-                android:background="@color/colorAccent"/>
+                android:src="@mipmap/icon_shenfen" />
 
         </LinearLayout>
 
@@ -128,7 +128,7 @@
                 android:id="@+id/tvUserTag1"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:textColor="@color/brown"
+                android:textColor="@color/light_brown"
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"
                 android:layout_marginEnd="4dp"
@@ -141,7 +141,7 @@
                 android:id="@+id/tvUserTag2"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:textColor="@color/brown"
+                android:textColor="@color/light_brown"
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"
                 android:layout_marginEnd="4dp"
@@ -154,7 +154,7 @@
                 android:id="@+id/tvUserTag3"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:textColor="@color/brown"
+                android:textColor="@color/light_brown"
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"
                 android:layout_marginEnd="4dp"

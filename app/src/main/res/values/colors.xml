@@ -11,7 +11,9 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="gray">#B8B8B8</color>
+    <color name="divider_grey">#E2E2E0</color>
     <color name="light_grey">#F8F8F8</color>
+    <color name="soft_brown_bg">#FFF3EE</color>
     <color name="light_brown">#FFC2A7</color>
     <color name="brown">#FF9C7D</color>
     <color name="deep_purple">#343E59</color>

@@ -7,6 +7,7 @@ import com.bumptech.glide.RequestBuilder
 import com.jywl.yezai.BuildConfig
 import com.jywl.yezai.Constant
 import com.jywl.yezai.MyApplication
+import timber.log.Timber
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Named
@@ -77,6 +78,7 @@ class GlideCenter {
     }
 
     private fun handleUrls(url:Any):Any?{
+        Timber.e("Load Image  " + url)
         if (url is String || url is Int || url is File){
             if (url is String) {
                 if (url.endsWith("null")) {

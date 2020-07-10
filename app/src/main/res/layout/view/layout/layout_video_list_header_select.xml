@@ -21,7 +21,7 @@
             android:layout_width="29dp"
             android:layout_height="29dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorAccent"/>
+            android:src="@mipmap/iocn_duanshipin_miyu" />
 
         <TextView
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:layout_width="29dp"
             android:layout_height="29dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorAccent"/>
+            android:src="@mipmap/iocn_duanshipin_xuetang" />
 
         <TextView
             android:layout_width="match_parent"
@@ -75,7 +75,7 @@
             android:layout_width="29dp"
             android:layout_height="29dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorAccent"/>
+            android:src="@mipmap/iocn_duanshipin_yuanfen" />
 
         <TextView
             android:layout_width="match_parent"

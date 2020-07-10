@@ -28,10 +28,6 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View{
     override fun initViewAndEvent() {
         EasyStatusBar.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white), true)
         initBottomBar()
-        //EasyStatusBar.makeStatusBarTransparent(this, true, llM, avatar)
-
-//        GlideCenter.get().showCircleImage(avatar, R.mipmap.ic_avatar)
-//        GlideCenter.get().showCrossFadeImage(pic, R.mipmap.ic_load_circle)
     }
 
     private fun initBottomBar(){
@@ -40,28 +36,28 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View{
             .addItem(
                 RecommendFragment::class.java,
                 getString(R.string.tab_recommend),
-                R.mipmap.tab_tuijian_pre,
+                R.mipmap.tab_tuijian_normal,
                 R.mipmap.tab_tuijian_pre)
             .addItem(
                 ShortVideoFragment::class.java,
                 getString(R.string.tab_short_video),
                 R.mipmap.tab_duanshipin_normal,
-                R.mipmap.tab_duanshipin_normal)
+                R.mipmap.tab_duanshipin)
             .addItem(
                 LiveActionFragment::class.java,
                 getString(R.string.tab_live_action),
                 R.mipmap.tab_dongtai_normal,
-                R.mipmap.tab_dongtai_normal)
+                R.mipmap.tab_dongtail)
             .addItem(
                 MessageFragment::class.java,
                 getString(R.string.tab_message),
                 R.mipmap.tab_xiaoxi_normal,
-                R.mipmap.tab_xiaoxi_normal)
+                R.mipmap.tab_xiaoxil)
             .addItem(
                 MineFragment::class.java,
                 getString(R.string.tab_mine),
                 R.mipmap.tab_wo_normal,
-                R.mipmap.tab_wo_normal)
+                R.mipmap.tab_wo)
             .setFirstChecked(0)
             .build()
     }

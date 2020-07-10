@@ -1,4 +1,4 @@
-package com.jywl.yezai.ui.widget
+package com.jywl.yezai.ui.content.main.liveaction
 
 import android.content.Context
 import android.view.LayoutInflater
