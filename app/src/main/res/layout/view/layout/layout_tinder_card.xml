@@ -284,8 +284,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:layout_height="0dp"
-                            android:layout_marginEnd="10dp"
-                            android:scaleType="centerCrop"
+                            android:paddingBottom="5dp"
                             android:src="@mipmap/ic_avatar"/>
 
                         <LinearLayout
@@ -297,13 +296,14 @@
                             <com.jywl.yezai.ui.widget.WidthSquareImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
+                                android:paddingBottom="5dp"
                                 android:src="@mipmap/ic_avatar"/>
 
                             <com.jywl.yezai.ui.widget.WidthSquareImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_marginTop="5dp"
-                                android:src="@mipmap/ic_avatar"/>
+                                android:src="@mipmap/ic_avatar"
+                                android:paddingBottom="5dp"/>
 
                         </LinearLayout>
 
@@ -722,14 +722,16 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         app:displayType="round_rect"
+                        android:layout_gravity="center_horizontal"
                         app:radius="4dp"
                         android:src="@mipmap/ic_default_circle_avatar"/>
 
                     <TextView
-                        android:layout_width="70dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/textColorBlack"
                         android:text="家有宠物"
+                        android:layout_gravity="center_horizontal"
                         android:textSize="12sp"
                         android:gravity="center"/>
 

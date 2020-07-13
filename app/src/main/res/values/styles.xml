@@ -21,6 +21,7 @@
         <item name="android:backgroundDimAmount">0.4</item>
     </style>
 
+    <!--顶部tab切换-->
     <style name="TabPagerStrip">
         <item name="android:background">@color/white</item>
         <item name="apTabBackground">@drawable/shape_tab_bg_white</item>
@@ -40,5 +41,12 @@
     <style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Large">
         <item name="android:typeface">monospace</item>
     </style>
+
+    <!--下劃線TextView-->
+    <declare-styleable name="UnderLineTextView" >
+        <attr name="underlineWidth" format="dimension" />
+        <attr name="underlineColor" format="color" />
+        <attr name="underlineTopMargin" format="dimension" />
+    </declare-styleable>
 
 </resources>

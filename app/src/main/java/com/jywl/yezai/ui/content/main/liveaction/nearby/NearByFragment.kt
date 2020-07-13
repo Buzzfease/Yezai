@@ -69,7 +69,7 @@ class NearByFragment : BaseMvpFragment<NearbyPresenter>(), NearbyContract.View, 
             "Buzz")
 
         repeat(10){
-            list.add(MultiTypeItem(LiveActionAdapter.ITEM_ACTION, user))
+            list.add(MultiTypeItem(LiveActionAdapter.ITEM_NEARBY, user))
 
         }
 

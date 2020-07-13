@@ -68,7 +68,7 @@ class HotFragment : BaseMvpFragment<HotPresenter>(),
         val list = ArrayList<MultiTypeItem<Any>>()
         val user = UserBean("https://api.xygeng.cn/Bing/", "Buzz")
         repeat(10){
-            list.add(MultiTypeItem(LiveActionAdapter.ITEM_ACTION, user))
+            list.add(MultiTypeItem(LiveActionAdapter.ITEM_HOT, user))
         }
 
         if (loadMore) mAdapter.addData(list) else mAdapter.replaceData(list)

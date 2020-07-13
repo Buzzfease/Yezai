@@ -57,9 +57,7 @@ class ShortVideoTabFragment :BaseMvpFragment<ShortVideoTabPresenter>(),
         initRecyclerView()
 
         //第一次加载
-        Handler().postDelayed({
-            setData(false)
-        },1000)
+        setData(false)
     }
 
     override fun onLoadMoreRequested() {

@@ -93,7 +93,7 @@
             <TextView
                 android:layout_width="65dp"
                 android:layout_height="26dp"
-                android:background="@drawable/shape_video_play_concern"
+                android:background="@drawable/shape_concern_primary"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:layout_gravity="center_vertical"
@@ -138,8 +138,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="0dp"
-                android:layout_marginEnd="10dp"
-                android:scaleType="centerCrop"
+                android:paddingBottom="5dp"
                 android:src="@mipmap/ic_avatar"/>
 
             <LinearLayout
@@ -151,15 +150,81 @@
                 <com.jywl.yezai.ui.widget.WidthSquareImageView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:paddingBottom="5dp"
                     android:src="@mipmap/ic_avatar"/>
 
                 <com.jywl.yezai.ui.widget.WidthSquareImageView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@mipmap/ic_avatar"/>
+                    android:src="@mipmap/ic_avatar"
+                    android:paddingBottom="5dp"/>
 
             </LinearLayout>
+
+        </LinearLayout>
+        
+        <!--小组-->
+        <LinearLayout
+            android:id="@+id/llTeam"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_user_find"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <com.jywl.yezai.ui.widget.RoundImageView
+                android:id="@+id/ivTeamIcon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_vertical"
+                app:displayType="round_rect"
+                app:radius="4dp"
+                android:src="@mipmap/ic_default_circle_avatar"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:textSize="14sp"
+                    android:textColor="@color/textColorDeepBlack"
+                    android:text="十二星座"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/textColorLightGray"
+                    android:text="共有23456位成员"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvJoin"
+                android:layout_width="65dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="去看看"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                android:background="@drawable/shape_primary_stoke"/>
 
         </LinearLayout>
 
@@ -236,6 +301,41 @@
                 android:layout_height="22dp"
                 android:layout_marginEnd="10dp"
                 android:src="@mipmap/icon_dt_pingli"/>
+
+        </LinearLayout>
+
+        <!--评论-->
+        <LinearLayout
+            android:id="@+id/llComment"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_user_find"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:text="自定义一 ：">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColorGrey"
+                android:textSize="14sp"
+                android:text="你好">
+
+            </TextView>
 
         </LinearLayout>
 

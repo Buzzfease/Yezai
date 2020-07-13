@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.jywl.yezai.ui.widget.RoundImageView
+        android:id="@+id/ivTeamIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_vertical"
+        app:displayType="round_rect"
+        app:radius="4dp"
+        android:src="@mipmap/ic_default_circle_avatar"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:textColor="@color/textColorDeepBlack"
+            android:text="十二星座"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:maxLines="2"
+            android:gravity="center_vertical"
+            android:textColor="@color/textColorLightGray"
+            android:text="1位好友已经加入，共有23456位成员,共有23456位成员"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvJoin"
+        android:layout_width="65dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_gravity="center_vertical"
+        android:text="已加入"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:background="@drawable/shape_concern_grey"/>
+
+</LinearLayout>
