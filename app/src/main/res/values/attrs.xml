@@ -81,4 +81,19 @@
             <enum name="rightBottom" value="3" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="MyMultiStateView">
+        <attr name="one_pic" format="reference" />
+        <attr name="two_pic" format="reference" />
+        <attr name="three_pic" format="reference" />
+        <attr name="more_than_three_pic" format="reference"/>
+        <attr name="initialViewStatus" format="enum">
+            <enum name="one_pic" value="0" />
+            <enum name="two_pic" value="1" />
+            <enum name="three_pic" value="2" />
+            <enum name="more_than_three_pic" value="3" />
+            <enum name="inxmlshow" value="4" />
+        </attr>
+    </declare-styleable>
+
 </resources>

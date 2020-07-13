@@ -15,6 +15,7 @@ import com.jywl.yezai.MyApplication
 import com.jywl.yezai.R
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.utils.DisplayUtil
+import com.jywl.yezai.utils.glide.GlideCenter
 import kotlinx.android.synthetic.main.layout_tinder_card.view.*
 
 /**
@@ -50,6 +51,7 @@ class TinderCardView @JvmOverloads constructor(
             rightBoundary = screenWidth * (5.0f / 6.0f) //是否右滑的边界
             padding = DisplayUtil.dip2px(context, PADDINGVALUE)
             setOnTouchListener(this)
+            initPicContainer()
             initUserDataTagView()
             initUserTargetTagView()
         }
@@ -203,6 +205,13 @@ class TinderCardView @JvmOverloads constructor(
             .itemHeight(DisplayUtil.dip2px(MyApplication.instance(),25f))
             .padding(DisplayUtil.dip2px(MyApplication.instance(), 18f), DisplayUtil.dip2px(MyApplication.instance(), 10f), DisplayUtil.dip2px(MyApplication.instance(), 8f))
             .commit()
+    }
+
+    private fun initPicContainer(){
+        picContainer.setViewStatus(MyMultiStateView.ViewStatus.threePicStatus)
+        GlideCenter.get().showCrossFadeImage(picContainer.findViewById<WidthSquareImageView>(R.id.ivPic1), R.mipmap.ic_avatar)
+        GlideCenter.get().showCrossFadeImage(picContainer.findViewById<WidthSquareImageView>(R.id.ivPic3), R.mipmap.ic_avatar)
+        GlideCenter.get().showCrossFadeImage(picContainer.findViewById<WidthSquareImageView>(R.id.ivPic3), R.mipmap.ic_avatar)
     }
 
     interface OnLoadMoreListener {

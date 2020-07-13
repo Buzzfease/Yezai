@@ -4,7 +4,6 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,9 +13,7 @@ import com.jywl.yezai.entity.MultiTypeItem
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.ui.content.BaseMvpFragment
 import com.jywl.yezai.ui.content.main.liveaction.LiveActionAdapter
-import com.jywl.yezai.ui.widget.UnderLineTextView
 import kotlinx.android.synthetic.main.fragment_team.*
-import kotlinx.android.synthetic.main.fragment_team.recyclerView
 import timber.log.Timber
 
 class TeamFragment : BaseMvpFragment<TeamPresenter>(), TeamContract.View {
@@ -71,7 +68,7 @@ class TeamFragment : BaseMvpFragment<TeamPresenter>(), TeamContract.View {
             setEnableLoadMore(false)
             setPreLoadNumber(0)
             val header = LayoutInflater.from(requireContext()).inflate(R.layout.layout_team_join_header, null) as LinearLayout
-            val footer = LayoutInflater.from(requireContext()).inflate(R.layout.layout_team_join_footer, null) as UnderLineTextView
+            val footer = LayoutInflater.from(requireContext()).inflate(R.layout.layout_team_join_footer, null) as LinearLayout
             addHeaderView(header)
             addFooterView(footer)
             setOnJoinClickListener(object :TeamJoinAdapter.OnJoinClickListener{

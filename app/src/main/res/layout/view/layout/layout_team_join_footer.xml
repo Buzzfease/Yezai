@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.jywl.yezai.ui.widget.UnderLineTextView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    android:textColor="@color/colorPrimary"
-    android:text="发现更多小组"
-    android:gravity="center"
-    android:textSize="14sp">
+    android:paddingBottom="70dp">
 
-</com.jywl.yezai.ui.widget.UnderLineTextView>
+    <com.jywl.yezai.ui.widget.UnderLineTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/colorPrimary"
+        android:text="发现更多小组"
+        android:gravity="center"
+        android:textSize="14sp">
+
+    </com.jywl.yezai.ui.widget.UnderLineTextView>
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+<!--三宫格一张图-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="24dp"
+    android:orientation="horizontal">
+
+    <com.jywl.yezai.ui.widget.WidthSquareImageView
+        android:id="@+id/ivPic1"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:paddingBottom="5dp"
+        android:src="@mipmap/ic_avatar"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+</LinearLayout>
