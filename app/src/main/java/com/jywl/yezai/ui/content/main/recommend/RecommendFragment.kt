@@ -8,9 +8,11 @@ import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.ui.content.BaseMvpFragment
 import com.jywl.yezai.ui.content.actiondetail.UserActionActivity
 import com.jywl.yezai.ui.content.gallery.MyGalleryActivity
+import com.jywl.yezai.ui.content.search.SearchActivity
 import com.jywl.yezai.ui.widget.TinderStackLayout
 import com.jywl.yezai.utils.EasyStatusBar
 import kotlinx.android.synthetic.main.fragment_recommend.*
+import kotlinx.android.synthetic.main.layout_video_card.*
 
 class RecommendFragment : BaseMvpFragment<RecommendPresenter>(),
     RecommendContract.View {
@@ -35,6 +37,10 @@ class RecommendFragment : BaseMvpFragment<RecommendPresenter>(),
 
         initCardStack()
         addStackCards()
+        tvSearch.setOnClickListener {
+            val intent = Intent(activity, SearchActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun initCardStack(){

@@ -6,6 +6,8 @@ import com.jywl.yezai.ui.content.gallery.MyGalleryActivity
 import com.jywl.yezai.ui.content.imagepreview.ImagePreviewActivity
 import dagger.Component
 import com.jywl.yezai.ui.content.main.MainActivity
+import com.jywl.yezai.ui.content.search.SearchActivity
+import com.jywl.yezai.ui.content.search.SearchResultActivity
 import com.jywl.yezai.ui.content.videoplay.VideoPlayActivity
 
 @ActivityScope
@@ -17,4 +19,6 @@ interface ActivityComponent {
     fun inject(userActionActivity: UserActionActivity)
     fun inject(actionDetailActivity: ActionDetailActivity)
     fun inject(imagePreviewActivity: ImagePreviewActivity)
+    fun inject(searchActivity: SearchActivity)
+    fun inject(searchResultActivity: SearchResultActivity)
 }

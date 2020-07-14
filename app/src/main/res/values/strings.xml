@@ -24,6 +24,9 @@
     <string name="type_secret_voice">密语</string>
     <string name="type_school">学堂</string>
     <string name="type_random_relation">随缘速配</string>
+    <!--搜索页面顶部导航栏名称-->
+    <string name="tab_condition_search">条件搜索</string>
+    <string name="tab_target_search">精准搜索</string>
     <!--app通用-->
     <string name="concern">关注</string>
 </resources>

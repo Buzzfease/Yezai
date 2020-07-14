@@ -21,7 +21,7 @@
         <item name="android:backgroundDimAmount">0.4</item>
     </style>
 
-    <!--顶部tab切换-->
+    <!--动态顶部tab切换-->
     <style name="TabPagerStrip">
         <item name="android:background">@color/white</item>
         <item name="apTabBackground">@drawable/shape_tab_bg_white</item>
@@ -36,6 +36,22 @@
         <item name="apTabPaddingLeftRight">16dp</item>
         <item name="apTabDrawMode">text</item>
         <item name="apTabTextSelectColor">@color/textColorBlack</item>
+    </style>
+
+    <!--搜索顶部tab切换-->
+    <style name="SearchTabPagerStrip">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="apTabBackground">@drawable/shape_tab_bg_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAppearance">@style/CustomTabPageIndicator.Text</item>
+        <item name="android:textColor">@color/textColorLightGray</item>
+        <item name="android:fillViewport">false</item>
+        <item name="apTabUnderlineColor">@color/white</item>
+        <item name="apTabDividerColor">@color/transparent</item>
+        <item name="apTabShouldExpand">false</item>
+        <item name="apTabPaddingLeftRight">16dp</item>
+        <item name="apTabDrawMode">text</item>
+        <item name="apTabTextSelectColor">@color/white</item>
     </style>
 
     <style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Large">

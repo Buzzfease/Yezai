@@ -11,6 +11,8 @@ import com.jywl.yezai.ui.content.main.mine.MineFragment
 import com.jywl.yezai.ui.content.main.recommend.RecommendFragment
 import com.jywl.yezai.ui.content.main.shortvideo.ShortVideoFragment
 import com.jywl.yezai.ui.content.main.shortvideo.tabs.ShortVideoTabFragment
+import com.jywl.yezai.ui.content.search.ConditionSearchFragment
+import com.jywl.yezai.ui.content.search.TargetSearchFragment
 import dagger.Component
 
 @FragmentScope
@@ -30,4 +32,8 @@ interface FragmentComponent {
     fun inject(teamFragment: TeamFragment)
     fun inject(loverFragment: LoverFragment)
     fun inject(shortVideoTabFragment: ShortVideoTabFragment)
+
+    //搜索页tab
+    fun inject(conditionSearchFragment: ConditionSearchFragment)
+    fun inject(targetSearchFragment: TargetSearchFragment)
 }

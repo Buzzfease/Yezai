@@ -9,7 +9,7 @@ import com.jywl.yezai.ui.content.main.shortvideo.ShortVideoFragment
 class ShortVideoFragmentAdapter (fm: FragmentManager,
                                  private val fragmentArray: Array<ShortVideoFragment.ShortVideoFragmentBean>,
                                  private var onItemClickListener : ShortVideoFragment.OnItemClickListener)
-    : FragmentStatePagerAdapter(fm) {
+    : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private var mViews = 0
     private var fragmentMap = HashMap<Int, Fragment>()
 

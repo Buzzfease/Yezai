@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_grey">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--推荐选项-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="13dp"
+                        android:drawableTop="@mipmap/icon_tiaoiian_caini"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:text="猜你喜欢"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="13dp"
+                        android:drawableTop="@mipmap/icon_tiaoiian_huangguan"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:text="会员专区"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="13dp"
+                        android:drawableTop="@mipmap/icon_tiaojian_meili"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:text="魅力用户"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="13dp"
+                        android:drawableTop="@mipmap/icon_tiaojian_90hou"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:text="90后"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="13dp"
+                        android:drawableTop="@mipmap/icon_tiaojian_bailing"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:text="白领"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="13dp"
+                        android:drawableTop="@mipmap/icon_tiaojian_itjingying"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:text="IT精英"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--基本条件-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="3dp"
+                        android:layout_height="14dp"
+                        android:background="@color/colorPrimary"
+                        android:layout_marginStart="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/textColorBlack"
+                        android:text="基本条件"
+                        android:layout_marginStart="10dp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--年龄-->
+                <LinearLayout
+                    android:id="@+id/llAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="年龄"/>
+
+                    <TextView
+                        android:id="@+id/tvAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="24-35岁"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--工作地区-->
+                <LinearLayout
+                    android:id="@+id/llArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="工作地区"/>
+
+                    <TextView
+                        android:id="@+id/tvArea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="西安市雁塔区"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--身高-->
+                <LinearLayout
+                    android:id="@+id/llHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="身高"/>
+
+                    <TextView
+                        android:id="@+id/tvHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="160CM"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--体型-->
+                <LinearLayout
+                    android:id="@+id/llBodySize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="体型"/>
+
+                    <TextView
+                        android:id="@+id/tvBodySize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--学历-->
+                <LinearLayout
+                    android:id="@+id/llEducation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="学历"/>
+
+                    <TextView
+                        android:id="@+id/tvEducation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--月收入-->
+                <LinearLayout
+                    android:id="@+id/llIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="月收入"/>
+
+                    <TextView
+                        android:id="@+id/tvIncome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+            </LinearLayout>
+
+            <!--高级搜索-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <!--标题-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="3dp"
+                        android:layout_height="14dp"
+                        android:background="@color/colorPrimary"
+                        android:layout_marginStart="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/textColorBlack"
+                        android:text="高级搜索"
+                        android:layout_marginStart="10dp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--职业-->
+                <LinearLayout
+                    android:id="@+id/llJob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="职业"/>
+
+                    <TextView
+                        android:id="@+id/tvJob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--籍贯-->
+                <LinearLayout
+                    android:id="@+id/llJiguan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="籍贯"/>
+
+                    <TextView
+                        android:id="@+id/tvJiguan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--住房情况-->
+                <LinearLayout
+                    android:id="@+id/llHouse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="住房情况"/>
+
+                    <TextView
+                        android:id="@+id/tvHouse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--买车情况-->
+                <LinearLayout
+                    android:id="@+id/llCar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="买车情况"/>
+
+                    <TextView
+                        android:id="@+id/tvCar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--婚姻状况-->
+                <LinearLayout
+                    android:id="@+id/llMarriage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="婚姻状况"/>
+
+                    <TextView
+                        android:id="@+id/tvMarriage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--子女状况-->
+                <LinearLayout
+                    android:id="@+id/llChild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="子女状况"/>
+
+                    <TextView
+                        android:id="@+id/tvChild"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--星座-->
+                <LinearLayout
+                    android:id="@+id/llStar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="星座"/>
+
+                    <TextView
+                        android:id="@+id/tvStar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--有无头像-->
+                <LinearLayout
+                    android:id="@+id/llHasAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="有无头像"/>
+
+                    <TextView
+                        android:id="@+id/tvHasAvatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@color/divider_grey"/>
+
+                <!--登陆情况-->
+                <LinearLayout
+                    android:id="@+id/llLoginStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="14sp"
+                        android:text="登陆情况"/>
+
+                    <TextView
+                        android:id="@+id/tvLoginStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="end"
+                        android:drawableEnd="@mipmap/icon_tiaojian_youjian"
+                        android:drawablePadding="10dp"
+                        android:layout_marginStart="18dp"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="14sp"
+                        android:text="不限"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvStartSearching"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:text="开始搜索"
+                android:background="@drawable/shape_primary_button"/>
+
+        </LinearLayout>
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/wheelView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</ScrollView>

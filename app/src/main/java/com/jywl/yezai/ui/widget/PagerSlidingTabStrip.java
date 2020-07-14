@@ -320,7 +320,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
         // draw indicator line
 
-        rectPaint.setColor(indicatorColor);
+        // rectPaint.setColor(indicatorColor);
 
         // default: line below current tab
         View currentTab = tabsContainer.getChildAt(currentPosition);
