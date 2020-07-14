@@ -1,5 +1,7 @@
 package com.jywl.yezai.di
 
+import com.jywl.yezai.ui.content.actiondetail.ActionDetailActivity
+import com.jywl.yezai.ui.content.actiondetail.UserActionActivity
 import com.jywl.yezai.ui.content.gallery.MyGalleryActivity
 import dagger.Component
 import com.jywl.yezai.ui.content.main.MainActivity
@@ -11,4 +13,6 @@ interface ActivityComponent {
     fun inject(mainActivity: MainActivity)
     fun inject(videoPlayActivity: VideoPlayActivity)
     fun inject(myGalleryActivity: MyGalleryActivity)
+    fun inject(userActionActivity: UserActionActivity)
+    fun inject(actionDetailActivity: ActionDetailActivity)
 }

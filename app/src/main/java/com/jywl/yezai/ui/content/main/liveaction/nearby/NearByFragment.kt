@@ -64,15 +64,10 @@ class NearByFragment : BaseMvpFragment<NearbyPresenter>(), NearbyContract.View, 
 
     private fun setData(loadMore :Boolean){
         val list = ArrayList<MultiTypeItem<Any>>()
-
-        val user = UserBean("https://api.xygeng.cn/Bing/",
-            "Buzz")
-
         repeat(10){
+            val user = UserBean("https://api.xygeng.cn/Bing/", "Buzz")
             list.add(MultiTypeItem(LiveActionAdapter.ITEM_NEARBY, user))
-
         }
-
         if (loadMore) mAdapter.addData(list) else mAdapter.replaceData(list)
         mAdapter.loadMoreComplete()
         Timber.e("setData")

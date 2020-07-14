@@ -1,6 +1,7 @@
 package com.jywl.yezai.ui.content.main.liveaction
 
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
@@ -10,7 +11,6 @@ import com.jywl.yezai.entity.MultiTypeItem
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.ui.widget.MyMultiStateView
 import com.jywl.yezai.ui.widget.RoundImageView
-import com.jywl.yezai.ui.widget.WidthSquareImageView
 import com.jywl.yezai.utils.glide.GlideCenter
 
 /**
@@ -26,6 +26,8 @@ class LiveActionAdapter : BaseMultiItemQuickAdapter<MultiTypeItem<Any>, BaseView
         const val ITEM_HOT = 2
         const val ITEM_TEAM = 3
         const val ITEM_LOVER = 4
+
+        const val ITEM_USER_ACTION = 5
     }
 
     init {
@@ -34,17 +36,26 @@ class LiveActionAdapter : BaseMultiItemQuickAdapter<MultiTypeItem<Any>, BaseView
         addItemType(ITEM_HOT, R.layout.layout_dongtai_item)
         addItemType(ITEM_TEAM, R.layout.layout_dongtai_item)
         addItemType(ITEM_LOVER, R.layout.layout_dongtai_item)
+        addItemType(ITEM_USER_ACTION, R.layout.layout_dongtai_item)
     }
 
     override fun convert(helper: BaseViewHolder, item: MultiTypeItem<Any>?) {
         val user = item?.getData() as UserBean
         val tvName = helper.getView<TextView>(R.id.tvUserName)
         val ivAvatar = helper.getView<RoundImageView>(R.id.ivAvatar)
+
         tvName.text = user.userName
         GlideCenter.get().showCrossFadeImage(ivAvatar, user.userAvatar)
 
+        helper.addOnClickListener(R.id.tvDetail)
+
         //三宫格
-        initPicContainer(helper, (1..9).random())
+        val picContainer = helper.getView<MyMultiStateView>(R.id.picContainer)
+        val imageList = ArrayList<Any>()
+        repeat((1..9).random()){
+            imageList.add("https://api.xygeng.cn/Bing/")
+        }
+        picContainer.setImageData(imageList)
 
         when (item.itemType) {
             ITEM_TEAM -> {
@@ -55,38 +66,8 @@ class LiveActionAdapter : BaseMultiItemQuickAdapter<MultiTypeItem<Any>, BaseView
                 helper.getView<LinearLayout>(R.id.llLover).visibility = View.VISIBLE
                 helper.getView<LinearLayout>(R.id.llUser).visibility = View.GONE
             }
-        }
-    }
-
-    private fun initPicContainer(helper: BaseViewHolder, picCount: Int){
-        val picContainer = helper.getView<MyMultiStateView>(R.id.picContainer)
-        val pic1 = helper.getView<WidthSquareImageView>(R.id.ivPic1)
-        val pic2 = helper.getView<WidthSquareImageView>(R.id.ivPic2)
-        val pic3 = helper.getView<WidthSquareImageView>(R.id.ivPic3)
-        val tvCount = helper.getView<TextView>(R.id.tvCount)
-        when {
-            picCount == 1 -> {
-                picContainer.setViewStatus(MyMultiStateView.ViewStatus.onePicStatus)
-                GlideCenter.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar)
-            }
-            picCount == 2 -> {
-                picContainer.setViewStatus(MyMultiStateView.ViewStatus.twoPicStatus)
-                GlideCenter.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar)
-                GlideCenter.get().showCrossFadeImage(pic2, R.mipmap.ic_avatar)
-            }
-            picCount == 3 -> {
-                picContainer.setViewStatus(MyMultiStateView.ViewStatus.threePicStatus)
-                GlideCenter.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar)
-                GlideCenter.get().showCrossFadeImage(pic2, R.mipmap.ic_avatar)
-                GlideCenter.get().showCrossFadeImage(pic3, R.mipmap.ic_avatar)
-            }
-            picCount > 3 -> {
-                picContainer.setViewStatus(MyMultiStateView.ViewStatus.moreThanThreePicStatus)
-                GlideCenter.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar)
-                GlideCenter.get().showCrossFadeImage(pic2, R.mipmap.ic_avatar)
-                GlideCenter.get().showCrossFadeImage(pic3, R.mipmap.ic_avatar)
-                tvCount.visibility = View.VISIBLE
-                tvCount.text = "共" + picCount + "张"
+            ITEM_USER_ACTION ->{
+                helper.getView<ImageView>(R.id.ivGift).visibility = View.VISIBLE
             }
         }
     }

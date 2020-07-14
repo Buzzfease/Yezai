@@ -258,6 +258,7 @@
             android:textColor="@color/textColorBlack"/>
 
         <TextView
+            android:id="@+id/tvDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
@@ -411,6 +412,14 @@
                 android:textSize="12sp"
                 android:textColor="@color/textColorLightGray"
                 android:text="距您2.4KM"/>
+
+            <ImageView
+                android:id="@+id/ivGift"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="26dp"
+                android:visibility="gone"
+                android:src="@mipmap/icon_gerendongtai_liwu"/>
 
             <ImageView
                 android:layout_width="22dp"

@@ -15,7 +15,6 @@ import com.jywl.yezai.MyApplication
 import com.jywl.yezai.R
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.utils.DisplayUtil
-import com.jywl.yezai.utils.glide.GlideCenter
 import kotlinx.android.synthetic.main.layout_tinder_card.view.*
 
 /**
@@ -29,7 +28,7 @@ class TinderCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr), OnTouchListener {
+) : FrameLayout(context, attrs, defStyleAttr), OnTouchListener, View.OnClickListener {
 
     private var padding = 0
     private var downX = 0f
@@ -42,6 +41,10 @@ class TinderCardView @JvmOverloads constructor(
     private var leftBoundary = 0f
     private var screenWidth = 0
     private var listener: OnLoadMoreListener? = null
+    private var onChildClickListener:OnChildClickListener? = null
+    private var currentUser:UserBean? = null
+    private var currentIndex:Int = 0
+
 
     fun init(context: Context) {
         if (!isInEditMode) {
@@ -179,8 +182,11 @@ class TinderCardView @JvmOverloads constructor(
         //iv_tips!!.alpha = 0f //图标隐藏
     }
 
-    fun bind(u: UserBean?) {
+    fun bind(user: UserBean, index:Int) {
         //加载用户信息
+        currentUser = user
+        currentIndex = index
+        tvMoreAction.setOnClickListener(this)
     }
 
     private fun initUserDataTagView(){
@@ -208,10 +214,16 @@ class TinderCardView @JvmOverloads constructor(
     }
 
     private fun initPicContainer(){
-        picContainer.setViewStatus(MyMultiStateView.ViewStatus.threePicStatus)
-        GlideCenter.get().showCrossFadeImage(picContainer.findViewById<WidthSquareImageView>(R.id.ivPic1), R.mipmap.ic_avatar)
-        GlideCenter.get().showCrossFadeImage(picContainer.findViewById<WidthSquareImageView>(R.id.ivPic3), R.mipmap.ic_avatar)
-        GlideCenter.get().showCrossFadeImage(picContainer.findViewById<WidthSquareImageView>(R.id.ivPic3), R.mipmap.ic_avatar)
+        //三宫格
+        val imageList = ArrayList<Any>()
+        repeat((1..9).random()){
+            imageList.add("https://api.xygeng.cn/Bing/")
+        }
+        picContainer.setImageData(imageList)
+    }
+
+    override fun onClick(view: View) {
+        onChildClickListener?.onChildClick(currentUser, currentIndex, view)
     }
 
     interface OnLoadMoreListener {
@@ -220,6 +232,14 @@ class TinderCardView @JvmOverloads constructor(
 
     fun setOnLoadMoreListener(listener: OnLoadMoreListener?) {
         this.listener = listener
+    }
+
+    interface OnChildClickListener{
+        fun onChildClick(userBean: UserBean?, position:Int, view:View)
+    }
+
+    fun setOnChildClickListener(listener: OnChildClickListener){
+        this.onChildClickListener = listener
     }
 
     companion object {

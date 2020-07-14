@@ -22,6 +22,7 @@ import com.luck.picture.lib.listener.OnResultCallbackListener
 import com.yanzhenjie.permission.RequestExecutor
 import com.yanzhenjie.permission.runtime.Permission
 import kotlinx.android.synthetic.main.activity_my_gallery.*
+import kotlinx.android.synthetic.main.layout_title_bar.*
 
 
 /**
@@ -57,6 +58,8 @@ class MyGalleryActivity :BaseMvpActivity<MyGalleryPresenter>(), MyGalleryContrac
         ivAdd.setOnClickListener {
             goPictureSelect()
         }
+
+        tvTitle.text = "我的相册"
         ivBack.setOnClickListener {
             onBackPressed()
         }

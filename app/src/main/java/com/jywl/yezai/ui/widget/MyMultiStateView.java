@@ -7,11 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 
 import com.jywl.yezai.R;
+import com.jywl.yezai.utils.glide.GlideCenter;
+
+import java.util.List;
 
 import timber.log.Timber;
 
@@ -264,6 +268,42 @@ public class MyMultiStateView extends FrameLayout {
     public void setViewStatus(@NonNull ViewStatus status) {
         mViewStatus = status;
         setInitailView();
+    }
+
+    public void setImageData(List<Object> list){
+        if (list != null && !list.isEmpty()){
+            int count = list.size();
+            if (count == 1){
+                WidthSquareImageView pic1 = onePicView.findViewById(R.id.ivPic1);
+                setViewStatus(MyMultiStateView.ViewStatus.onePicStatus);
+                GlideCenter.Companion.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar);
+            }else if (count == 2){
+                WidthSquareImageView pic1 = twoPicView.findViewById(R.id.ivPic1);
+                WidthSquareImageView pic2 = twoPicView.findViewById(R.id.ivPic2);
+                setViewStatus(MyMultiStateView.ViewStatus.twoPicStatus);
+                GlideCenter.Companion.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar);
+                GlideCenter.Companion.get().showCrossFadeImage(pic2, R.mipmap.ic_avatar);
+            }else if (count == 3){
+                WidthSquareImageView pic1 = threePicView.findViewById(R.id.ivPic1);
+                WidthSquareImageView pic2 = threePicView.findViewById(R.id.ivPic2);
+                WidthSquareImageView pic3 = threePicView.findViewById(R.id.ivPic3);
+                setViewStatus(ViewStatus.threePicStatus);
+                GlideCenter.Companion.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar);
+                GlideCenter.Companion.get().showCrossFadeImage(pic2, R.mipmap.ic_avatar);
+                GlideCenter.Companion.get().showCrossFadeImage(pic3, R.mipmap.ic_avatar);
+            }else {
+                WidthSquareImageView pic1 = moreThanThreePicView.findViewById(R.id.ivPic1);
+                WidthSquareImageView pic2 = moreThanThreePicView.findViewById(R.id.ivPic2);
+                WidthSquareImageView pic3 = moreThanThreePicView.findViewById(R.id.ivPic3);
+                TextView tvCount = moreThanThreePicView.findViewById(R.id.tvCount);
+                setViewStatus(ViewStatus.moreThanThreePicStatus);
+                GlideCenter.Companion.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar);
+                GlideCenter.Companion.get().showCrossFadeImage(pic2, R.mipmap.ic_avatar);
+                GlideCenter.Companion.get().showCrossFadeImage(pic3, R.mipmap.ic_avatar);
+                tvCount.setVisibility(View.VISIBLE);
+                tvCount.setText("共" + count + "张");
+            }
+        }
     }
  
     /**

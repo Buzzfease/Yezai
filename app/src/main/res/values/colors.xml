@@ -17,6 +17,7 @@
     <color name="light_brown">#FFC2A7</color>
     <color name="brown">#FF9C7D</color>
     <color name="lover_brown">#FF9B8F</color>
+    <color name="indigo">#5869C0</color>
     <color name="deep_purple">#343E59</color>
     <color name="black_purple">#2E324A</color>
 </resources>

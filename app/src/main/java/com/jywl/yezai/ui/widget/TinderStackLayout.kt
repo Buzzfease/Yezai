@@ -2,10 +2,11 @@ package com.jywl.yezai.ui.widget
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.FrameLayout
 import com.jywl.yezai.entity.UserBean
+import com.jywl.yezai.ui.widget.TinderCardView.OnChildClickListener
 import com.jywl.yezai.ui.widget.TinderCardView.OnLoadMoreListener
 import com.jywl.yezai.utils.DisplayUtil
 import timber.log.Timber
@@ -22,16 +23,19 @@ class TinderStackLayout @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) :
-    FrameLayout(context!!, attrs, defStyleAttr), OnLoadMoreListener {
+    FrameLayout(context!!, attrs, defStyleAttr), OnLoadMoreListener, OnChildClickListener {
     private var params: ViewGroup.LayoutParams? = null
     private var index = 0
     private var scaleY = 0
     private var tc: TinderCardView? = null
     private var mList: List<UserBean>? = null
-    private var onStackLoadMoreListenr:OnStackLoadMoreListener? = null
-
+    private var onStackLoadMoreListener:OnStackLoadMoreListener? = null
     fun setOnStackLoadMoreListener(listener: OnStackLoadMoreListener?) {
-        this.onStackLoadMoreListenr = listener
+        this.onStackLoadMoreListener = listener
+    }
+    private var onStackChildClickListener:OnStackChildClickListener? = null
+    fun setOnStackChildClickListener(listener:OnStackChildClickListener){
+        this.onStackChildClickListener = listener
     }
 
     private fun init() {
@@ -44,7 +48,7 @@ class TinderStackLayout @JvmOverloads constructor(
 
 
 
-    private fun addCard(view: TinderCardView) {
+    private fun addCard(view: TinderCardView?) {
         val count = childCount
         addView(view, 0, params)
 //        val scaleX = 1 - count / BASESCALE_X_VALUE
@@ -55,7 +59,7 @@ class TinderStackLayout @JvmOverloads constructor(
 //            .setInterpolator(AnticipateOvershootInterpolator()).duration = DURATIONTIME.toLong()
     }
 
-    fun setDatas(list: List<UserBean>?) {
+    fun setData(list: List<UserBean>?) {
         mList = list
         if (mList == null) {
             return
@@ -63,9 +67,10 @@ class TinderStackLayout @JvmOverloads constructor(
         val i = index
         while (index < i + STACK_SIZE) {
             tc = TinderCardView(context)
-            tc!!.bind(mList!![index])
-            tc!!.setOnLoadMoreListener(this)
-            addCard(tc!!)
+            tc?.bind(mList!![index], index)
+            tc?.setOnLoadMoreListener(this)
+            tc?.setOnChildClickListener(this)
+            addCard(tc)
             index++
         }
     }
@@ -86,7 +91,7 @@ class TinderStackLayout @JvmOverloads constructor(
 //            }
 //        }
 
-        onStackLoadMoreListenr?.onStackLoadMore()
+        onStackLoadMoreListener?.onStackLoadMore()
 
 
 //        val childCount = childCount
@@ -103,6 +108,10 @@ class TinderStackLayout @JvmOverloads constructor(
 //        }
     }
 
+    override fun onChildClick(userBean: UserBean?, position: Int, view: View) {
+        onStackChildClickListener?.onStackChildClick(userBean, position, view)
+    }
+
     companion object {
         const val BASESCALE_X_VALUE = 50.0f
         const val BASESCALE_Y_VALUE = 8
@@ -112,6 +121,10 @@ class TinderStackLayout @JvmOverloads constructor(
 
     interface OnStackLoadMoreListener{
         fun onStackLoadMore()
+    }
+
+    interface OnStackChildClickListener{
+        fun onStackChildClick(userBean: UserBean?, position: Int, view: View)
     }
 
     init {

@@ -1,9 +1,15 @@
 package com.jywl.yezai.ui.content.main.recommend
 
+import android.content.Intent
+import android.view.View
+import com.jywl.yezai.FinalParams
 import com.jywl.yezai.R
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.ui.content.BaseMvpFragment
+import com.jywl.yezai.ui.content.actiondetail.UserActionActivity
+import com.jywl.yezai.ui.content.gallery.MyGalleryActivity
 import com.jywl.yezai.ui.widget.TinderStackLayout
+import com.jywl.yezai.utils.EasyStatusBar
 import kotlinx.android.synthetic.main.fragment_recommend.*
 
 class RecommendFragment : BaseMvpFragment<RecommendPresenter>(),
@@ -37,13 +43,24 @@ class RecommendFragment : BaseMvpFragment<RecommendPresenter>(),
                 addStackCards()
             }
         })
+        tinderStackLayout.setOnStackChildClickListener(object :TinderStackLayout.OnStackChildClickListener{
+            override fun onStackChildClick(userBean: UserBean?, position: Int, view: View) {
+                when(view.id){
+                    R.id.tvMoreAction ->{
+                        toast("第" + position.toString() + "张卡的查看更多被点击了")
+                        val intent = Intent(activity, UserActionActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+            }
+        })
     }
 
     private fun addStackCards(){
         repeat(5){
             mList.add(UserBean("https://api.xygeng.cn/Bing/", "Buzz"))
         }
-        tinderStackLayout.setDatas(mList)
+        tinderStackLayout.setData(mList)
     }
 
 
