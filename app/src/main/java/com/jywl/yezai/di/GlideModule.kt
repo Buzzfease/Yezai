@@ -1,5 +1,6 @@
 package com.jywl.yezai.di
 
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
@@ -80,6 +81,15 @@ class GlideModule {
             .apply(options)
             .apply(RequestOptions.bitmapTransform(GlideCircleTransform()))
             .transition(DrawableTransitionOptions.withCrossFade())
+    }
+
+    @Singleton
+    @Provides
+    @Named("withBitmap")
+    fun provideBitmap(@Named("errorRes") options: RequestOptions): RequestBuilder<Bitmap>{
+        return Glide.with(MyApplication.instance())
+            .asBitmap()
+            .apply(options)
     }
 
 }

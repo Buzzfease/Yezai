@@ -40,6 +40,10 @@
             android:screenOrientation="portrait"
             android:launchMode="singleTop"/>
 
+        <activity android:name=".ui.content.imagepreview.ImagePreviewActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"/>
+
     </application>
 
 </manifest>

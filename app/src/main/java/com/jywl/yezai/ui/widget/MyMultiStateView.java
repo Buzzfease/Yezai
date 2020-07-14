@@ -1,6 +1,7 @@
 package com.jywl.yezai.ui.widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -12,7 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 
+import com.jywl.yezai.FinalParams;
 import com.jywl.yezai.R;
+import com.jywl.yezai.ui.content.imagepreview.ImagePreviewActivity;
+import com.jywl.yezai.utils.TempUtil;
 import com.jywl.yezai.utils.glide.GlideCenter;
 
 import java.util.List;
@@ -277,12 +281,30 @@ public class MyMultiStateView extends FrameLayout {
                 WidthSquareImageView pic1 = onePicView.findViewById(R.id.ivPic1);
                 setViewStatus(MyMultiStateView.ViewStatus.onePicStatus);
                 GlideCenter.Companion.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar);
+                pic1.setOnClickListener(view -> {
+                    Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
+                    intent.putExtra(FinalParams.IMAGE_LIST, TempUtil.INSTANCE.createRandomImageListBySize(count));
+                    intent.putExtra(FinalParams.START_IMAGE_POSITION, 0);
+                    getContext().startActivity(intent);
+                });
             }else if (count == 2){
                 WidthSquareImageView pic1 = twoPicView.findViewById(R.id.ivPic1);
                 WidthSquareImageView pic2 = twoPicView.findViewById(R.id.ivPic2);
                 setViewStatus(MyMultiStateView.ViewStatus.twoPicStatus);
                 GlideCenter.Companion.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar);
                 GlideCenter.Companion.get().showCrossFadeImage(pic2, R.mipmap.ic_avatar);
+                pic1.setOnClickListener(view -> {
+                    Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
+                    intent.putExtra(FinalParams.IMAGE_LIST, TempUtil.INSTANCE.createRandomImageListBySize(count));
+                    intent.putExtra(FinalParams.START_IMAGE_POSITION, 0);
+                    getContext().startActivity(intent);
+                });
+                pic2.setOnClickListener(view -> {
+                    Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
+                    intent.putExtra(FinalParams.IMAGE_LIST, TempUtil.INSTANCE.createRandomImageListBySize(count));
+                    intent.putExtra(FinalParams.START_IMAGE_POSITION, 1);
+                    getContext().startActivity(intent);
+                });
             }else if (count == 3){
                 WidthSquareImageView pic1 = threePicView.findViewById(R.id.ivPic1);
                 WidthSquareImageView pic2 = threePicView.findViewById(R.id.ivPic2);
@@ -291,6 +313,24 @@ public class MyMultiStateView extends FrameLayout {
                 GlideCenter.Companion.get().showCrossFadeImage(pic1, R.mipmap.ic_avatar);
                 GlideCenter.Companion.get().showCrossFadeImage(pic2, R.mipmap.ic_avatar);
                 GlideCenter.Companion.get().showCrossFadeImage(pic3, R.mipmap.ic_avatar);
+                pic1.setOnClickListener(view -> {
+                    Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
+                    intent.putExtra(FinalParams.IMAGE_LIST, TempUtil.INSTANCE.createRandomImageListBySize(count));
+                    intent.putExtra(FinalParams.START_IMAGE_POSITION, 0);
+                    getContext().startActivity(intent);
+                });
+                pic2.setOnClickListener(view -> {
+                    Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
+                    intent.putExtra(FinalParams.IMAGE_LIST, TempUtil.INSTANCE.createRandomImageList());
+                    intent.putExtra(FinalParams.START_IMAGE_POSITION, 1);
+                    getContext().startActivity(intent);
+                });
+                pic3.setOnClickListener(view -> {
+                    Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
+                    intent.putExtra(FinalParams.IMAGE_LIST, TempUtil.INSTANCE.createRandomImageList());
+                    intent.putExtra(FinalParams.START_IMAGE_POSITION, 2);
+                    getContext().startActivity(intent);
+                });
             }else {
                 WidthSquareImageView pic1 = moreThanThreePicView.findViewById(R.id.ivPic1);
                 WidthSquareImageView pic2 = moreThanThreePicView.findViewById(R.id.ivPic2);
@@ -302,6 +342,25 @@ public class MyMultiStateView extends FrameLayout {
                 GlideCenter.Companion.get().showCrossFadeImage(pic3, R.mipmap.ic_avatar);
                 tvCount.setVisibility(View.VISIBLE);
                 tvCount.setText("共" + count + "张");
+
+                pic1.setOnClickListener(view -> {
+                    Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
+                    intent.putExtra(FinalParams.IMAGE_LIST, TempUtil.INSTANCE.createRandomImageList());
+                    intent.putExtra(FinalParams.START_IMAGE_POSITION, 0);
+                    getContext().startActivity(intent);
+                });
+                pic2.setOnClickListener(view -> {
+                    Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
+                    intent.putExtra(FinalParams.IMAGE_LIST, TempUtil.INSTANCE.createRandomImageList());
+                    intent.putExtra(FinalParams.START_IMAGE_POSITION, 1);
+                    getContext().startActivity(intent);
+                });
+                pic3.setOnClickListener(view -> {
+                    Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
+                    intent.putExtra(FinalParams.IMAGE_LIST, TempUtil.INSTANCE.createRandomImageList());
+                    intent.putExtra(FinalParams.START_IMAGE_POSITION, 2);
+                    getContext().startActivity(intent);
+                });
             }
         }
     }

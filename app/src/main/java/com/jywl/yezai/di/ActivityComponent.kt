@@ -3,6 +3,7 @@ package com.jywl.yezai.di
 import com.jywl.yezai.ui.content.actiondetail.ActionDetailActivity
 import com.jywl.yezai.ui.content.actiondetail.UserActionActivity
 import com.jywl.yezai.ui.content.gallery.MyGalleryActivity
+import com.jywl.yezai.ui.content.imagepreview.ImagePreviewActivity
 import dagger.Component
 import com.jywl.yezai.ui.content.main.MainActivity
 import com.jywl.yezai.ui.content.videoplay.VideoPlayActivity
@@ -15,4 +16,5 @@ interface ActivityComponent {
     fun inject(myGalleryActivity: MyGalleryActivity)
     fun inject(userActionActivity: UserActionActivity)
     fun inject(actionDetailActivity: ActionDetailActivity)
+    fun inject(imagePreviewActivity: ImagePreviewActivity)
 }

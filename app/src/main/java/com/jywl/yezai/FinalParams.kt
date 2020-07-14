@@ -7,4 +7,6 @@ package com.jywl.yezai
  */
 object FinalParams {
     const val MY_GALLERY_IMAGES = "my_gallery_images"
+    const val START_IMAGE_POSITION = "start_image_position"
+    const val IMAGE_LIST = "image_list"
 }
