@@ -293,6 +293,12 @@
                     </com.jywl.yezai.ui.widget.MyMultiStateView>
 
                 </LinearLayout>
+                
+                <com.jywl.yezai.ui.widget.VerticalColumnarGraphView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                </com.jywl.yezai.ui.widget.VerticalColumnarGraphView>
 
                 <!--观点-->
                 <LinearLayout
