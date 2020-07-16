@@ -1,5 +1,4 @@
 package com.jywl.yezai.ui.widget
-
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
@@ -17,7 +16,7 @@ import android.view.View
  */
 class VerticalColumnarGraphView : View {
     constructor(context: Context?) : super(context)
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) { init() }
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr){
         init()
     }
@@ -25,76 +24,114 @@ class VerticalColumnarGraphView : View {
     //1毫秒(ms)=1000000纳秒(ns)
     private val DEFAULT_CLICK_TIME: Long = 1000000000
 
-    private var paint: Paint? = null
-    private var textPaint: TextPaint? = null
+    private var paint: Paint? = null                //柱形画笔
+    private var textPaint: TextPaint? = null        //文字画笔
+    private var paintA:Paint? = null                //我的曲线画笔
+    private var paintB:Paint? = null                //对方曲线画笔
+    private var pathA:Path? = null                  //我的曲线路径
+    private var pathB:Path? = null                  //对方曲线路径
+    private var dotPaint:Paint? = null              //白点画笔
 
-    private val topLabels = arrayOf("外向", "追求", "自主", "亲密", "随性", "融入")
-    private val bottomLabels = arrayOf("内向", "知足", "通融", "独立", "计划", "独处")
-
-    private val labelTextColor = 0xff37373                 //字体颜色
-    private val labelTextColorSelected = 0xffffbc97         //选中字体颜色
+    private val labelTextColor = 0x88bc97                   //字体颜色
     private var labelTextSize = 0f                          //坐标字体大小
 
     private var clipRect: Rect = Rect()
-    private var rect: Rect = Rect()
     private var rectF = RectF()
 
 
     private var space = 0       //柱形间隔
-    private val column = 7      //柱形数目
+    private val column = 6      //柱形数目
 
-    private val lOffset = 60    //左侧预留
-    private val tOffset = 20    //顶部预留
-    private val rOffset = 20    //右侧预留
-    private val bOffset = 40    //底部预留
+    private val lOffset = 5    //左侧预留
+    private val tOffset = 60    //顶部预留
+    private val rOffset = 5    //右侧预留
+    private val bOffset = 60    //底部预留
 
-    private var items :List<ColumnarItem>? = null  //数据
+    private var columnarData :List<ColumnarItem>? = null  //柱形数据
+    private var userDataA:UserRate? = null //用户数据A
+    private var userDataB:UserRate? = null //用户数据B
+    private var mValuePointListA:ArrayList<PointF> = ArrayList() //用户A数据点集合
+    private var mValuePointListB:ArrayList<PointF> = ArrayList() //用户B数据点集合
+    private var mControlPointListA:ArrayList<PointF> = ArrayList() //用户A贝塞尔曲线控制点集合
+    private var mControlPointListB:ArrayList<PointF> = ArrayList() //用户A贝塞尔曲线控制点集合
+    private val SMOOTHNESS = 0.33f //贝塞尔曲线平滑度
 
     private var lastSelectedIndex = -1      //上一次点击选中柱形
     private var selectedIndex = -1          //点击选中柱形
 
     private val onColumnarItemClickListener: OnColumnarItemClickListener? = null
     private var pressedTimStamp: Long = 0
-    private var mPressed = false
 
     private fun init(){
-        paint = Paint(Paint.ANTI_ALIAS_FLAG);
-        textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG);
-        labelTextSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 14f, context.resources.displayMetrics)
+        paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
-        setItems(createTestData());
+        textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
+        textPaint?.color = labelTextColor
+        labelTextSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 14f, context.resources.displayMetrics)
+        textPaint?.textSize = labelTextSize
+        textPaint?.typeface = Typeface.defaultFromStyle(Typeface.NORMAL)
+        textPaint?.alpha = 0xFF
+        textPaint?.textAlign = Paint.Align.CENTER;
+
+        paintA = Paint(Paint.ANTI_ALIAS_FLAG)
+        paintA?.strokeWidth = 8f
+        paintA?.style = Paint.Style.STROKE
+        paintA?.color = Color.parseColor("#FF0844")
+
+        paintB = Paint(Paint.ANTI_ALIAS_FLAG)
+        paintB?.strokeWidth = 8f
+        paintB?.style = Paint.Style.STROKE
+        paintB?.color = Color.parseColor("#FFC29F")
+
+        dotPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        dotPaint?.style = Paint.Style.FILL
+        //dotPaint.alpha = 255
+        dotPaint?.color = Color.WHITE
+
+        pathA = Path()
+        pathB = Path()
+
+        initData()
+
+        val dataA = UserRate()
+        val dataB = UserRate()
+        dataA.rate = intArrayOf(55, 79, 62, 33, 16, 85)
+        dataB.rate = intArrayOf(16, 88, 56, 90, 13, 99)
+        setData(dataA, dataB)
     }
 
 
-    private fun createTestData(): List<ColumnarItem> {
+    private fun initData() {
         val data: MutableList<ColumnarItem> = ArrayList()
         val ratios = floatArrayOf(1f, 1f, 1f, 1f, 1f, 1f, 1f)
-        val colors = intArrayOf(0x80ff4343.toInt(), 0x80ffbc97.toInt(), 0x80fff177.toInt(), 0x80b5fb86.toInt(), 0x80a7dcfb.toInt(), 0x80a193ff.toInt())
-        val labels = arrayOf("性格特点", "生活态度", "处事风格", "爱情观念", "消费观念", "家庭关系")
-        val values = arrayOf("这种性格特点", "这种生活态度", "这种处事风格", "这种爱情观念", "这种消费观念", "这种家庭关系")
+        val colors = intArrayOf(0x66ff4343, 0x66ffbc97, 0x66fff177, 0x66b5fb86, 0x66a7dcfb, 0x66a193ff)
+        val topLabel = arrayOf("外向", "追求", "自主", "亲密", "随性", "融入")
+        val bottomLabel = arrayOf("内向", "知足", "通融", "独立", "计划", "独处")
         for (i in 0 until column) {
             val item = ColumnarItem()
             item.color = colors[i]
             item.ratio = ratios[i]
-            item.label = labels[i]
-            item.value = values[i]
+            item.topLabel = topLabel[i]
+            item.bottomLabel = bottomLabel[i]
             data.add(item)
         }
-        return data
+        this.columnarData = data
+        invalidate()
     }
 
-    //设置数据并重绘
-    fun setItems(items: List<ColumnarItem>) {
-        this.items = items
+    //设置用户数据并重绘
+    fun setData(dataA: UserRate, dataB: UserRate) {
+        this.userDataA = dataA
+        this.userDataB = dataB
         invalidate()
     }
 
     //获取选中的柱形index,
     //hExpandClickPixel 横向的额外点击区域提高点击的灵敏度
     private fun getSelectedIndex(x: Float, y: Float, hExpandClickPixel: Int): Int {
-        if (items == null || items!!.isEmpty()) return -1
-        for (i in items!!.indices) {
-            val item: ColumnarItem = items!![i]
+        if (columnarData == null || columnarData!!.isEmpty()) return -1
+        for (i in columnarData!!.indices) {
+            val item: ColumnarItem = columnarData!![i]
             item.initRectF(rectF)
             var top: Float = item.top
             //为了增加柱状的点击灵明度，给定柱状的最小点击区域高度为space
@@ -133,7 +170,7 @@ class VerticalColumnarGraphView : View {
         if (lastSelectedIndex != selectedIndex) {
             lastSelectedIndex = selectedIndex
             invalidate()
-            val item = if (selectedIndex < 0) null else items!![selectedIndex]
+            val item = if (selectedIndex < 0) null else columnarData!![selectedIndex]
             if (onColumnarItemClickListener != null && item != null) {
                 onColumnarItemClickListener.onColumnarItemClick(this, selectedIndex, item)
             }
@@ -142,26 +179,30 @@ class VerticalColumnarGraphView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
-//        clipRect[paddingLeft, paddingTop, width - paddingRight] = height - paddingBottom
-//        textPaint!!.color = labelTextColor
-//        textPaint!!.textSize = labelTextSize
-//        textPaint!!.typeface = Typeface.defaultFromStyle(Typeface.NORMAL)
-//        textPaint!!.alpha = 0xFF
-
         clipRect.set(paddingLeft + lOffset, paddingTop + tOffset, width - paddingRight - rOffset, height - paddingBottom - bOffset);
-        drawItems(canvas)
+        drawColumnarAndText(canvas)
+
+        if (userDataA != null){
+            calculateRatePoint(userDataA!!, mValuePointListA)
+            calculateControlPoint(mValuePointListA, mControlPointListA)
+            drawUserRateLinesAndDot(mValuePointListA, mControlPointListA, pathA!!, paintA!!, canvas)
+        }
+        if (userDataB != null){
+            calculateRatePoint(userDataB!!, mValuePointListB)
+            calculateControlPoint(mValuePointListB, mControlPointListB)
+            drawUserRateLinesAndDot(mValuePointListB, mControlPointListB, pathB!!, paintB!!, canvas)
+        }
     }
 
-    //画柱形
-    private fun drawItems(canvas: Canvas) {
-        if (items == null || items!!.isEmpty()) return
+    //画柱形与文字
+    private fun drawColumnarAndText(canvas: Canvas) {
+        if (columnarData.isNullOrEmpty()) return
         paint!!.style = Paint.Style.FILL
         val chartWidth: Int = calculateSuitableChartWidth(clipRect.width())
         space = chartWidth
         val chartHeight = clipRect.height()
-        for (i in items!!.indices) {
-            val item = items!![i] ?: continue
+        for (i in columnarData!!.indices) {
+            val item = columnarData!![i]
             paint!!.color = item.color
             val ratioHeight = chartHeight * item.ratio
             item.left = clipRect.left + space * (i + 1) + (chartWidth * i).toFloat()
@@ -171,22 +212,46 @@ class VerticalColumnarGraphView : View {
             item.initRectF(rectF)
             if (rectF.height() > 0) {
                 if (i == selectedIndex) {
+                    //设置选中的柱形，文字的透明度
                     paint!!.alpha = 0xFF
-                    drawSelectedItem(canvas, item, rectF, paint)
+                    textPaint!!.alpha = 0xFF
                 } else {
-                    paint!!.alpha = if (selectedIndex < 0) 0xFF else 0x66
-                    canvas.drawRoundRect(rectF, 4f, 4f, paint!!)
+                    //设置普通的柱形，文字的透明度
+                    paint!!.alpha = 0x88
+                    textPaint!!.alpha = 0x88
                 }
+                val fontMetrics = textPaint!!.fontMetrics
+                //画柱形
+                canvas.drawRoundRect(rectF, 4f, 4f, paint!!)
+                //画柱形顶部文字
+                canvas.drawText(item.topLabel, item.left + chartWidth / 2, item.top - fontMetrics.bottom,  textPaint!!)
+                //画柱底部文字
+                canvas.drawText(item.bottomLabel, item.left + chartWidth / 2, item.bottom + labelTextSize, textPaint!!)
             }
         }
         paint!!.alpha = 0xFF
     }
 
-    //画选中的柱形
-    private fun drawSelectedItem(canvas: Canvas, item: ColumnarItem?, rectF: RectF?, paint: Paint?) {
-        canvas.drawRoundRect(rectF!!, 4f, 4f, paint!!)
-    }
+    private fun drawUserRateLinesAndDot(valuePointList: List<PointF>, controlPointList: ArrayList<PointF>, mPath:Path, mPaint:Paint, canvas: Canvas){
+        mPath.reset()
+        val firstPoint = valuePointList.first()
+        mPath.moveTo(firstPoint.x, firstPoint.y)
+        //填充贝塞尔曲线控制点
+        for (i in 0 until (valuePointList.size - 1) * 2 step 2){
+            val leftControlPoint = controlPointList[i]
+            val rightControlPoint = controlPointList[i + 1]
+            val rightPoint = valuePointList[i / 2 + 1]
+            mPath.cubicTo(leftControlPoint.x, leftControlPoint.y, rightControlPoint.x, rightControlPoint.y, rightPoint.x, rightPoint.y)
+        }
+        canvas.drawPath(mPath, mPaint)
 
+        //画数值点
+        valuePointList.forEachIndexed { index, pointF ->
+            if (index == selectedIndex){
+                canvas.drawCircle(pointF.x, pointF.y, 15f, dotPaint!!)
+            }
+        }
+    }
 
     //计算柱形的宽度
     private fun calculateSuitableChartWidth(width: Int): Int {
@@ -199,6 +264,54 @@ class VerticalColumnarGraphView : View {
         fun onColumnarItemClick(view: VerticalColumnarGraphView?, selectedIndex: Int, item:ColumnarItem)
     }
 
+    private fun calculateRatePoint(userData:UserRate, valuePointList:ArrayList<PointF>) {
+        valuePointList.clear()
+        userData.rate?.forEachIndexed { index, rate ->
+            val x = (columnarData!![index].left + columnarData!![index].right) / 2f
+            val y = columnarData!![index].bottom - (columnarData!![index].bottom - columnarData!![index].top) * (rate / 100f)
+            valuePointList.add(PointF(x, y))
+        }
+    }
+
+    private fun calculateControlPoint(valuePointList: List<PointF>, controlPointList:ArrayList<PointF>) {
+        controlPointList.clear()
+        if (valuePointList.size <= 1) {
+            return
+        }
+        valuePointList.forEachIndexed { index, pointF ->
+            when (index) {
+                0 -> {//第一项
+                    //添加后控制点
+                    val nextPoint = valuePointList[index + 1]
+                    val controlX = pointF.x + (nextPoint.x - pointF.x) * SMOOTHNESS
+                    val controlY = pointF.y
+                    controlPointList.add(PointF(controlX, controlY))
+                }
+                valuePointList.size - 1 -> {//最后一项
+                    //添加前控制点
+                    val lastPoint = valuePointList[index - 1]
+                    val controlX = pointF.x - (pointF.x - lastPoint.x) * SMOOTHNESS
+                    val controlY = pointF.y
+                    controlPointList.add(PointF(controlX, controlY))
+                }
+                else -> {//中间项
+                    val lastPoint = valuePointList[index - 1]
+                    val nextPoint = valuePointList[index + 1]
+                    val k = (nextPoint.y - lastPoint.y) / (nextPoint.x - lastPoint.x)
+                    val b = pointF.y - k * pointF.x
+                    //添加前控制点
+                    val lastControlX = pointF.x - (pointF.x - lastPoint.x) * SMOOTHNESS
+                    val lastControlY = k * lastControlX + b
+                    controlPointList.add(PointF(lastControlX, lastControlY))
+                    //添加后控制点
+                    val nextControlX = pointF.x + (nextPoint.x - pointF.x) * SMOOTHNESS
+                    val nextControlY = k * nextControlX + b
+                    controlPointList.add(PointF(nextControlX, nextControlY))
+                }
+            }
+        }
+    }
+
     data class ColumnarItem (
         var color: Int = Color.BLUE,
         var ratio:Float = 0f,     //比率, 柱形高度百分比
@@ -206,12 +319,18 @@ class VerticalColumnarGraphView : View {
         var top:Float = 0f,        //无需设置
         var right:Float = 0f,      //无需设置
         var bottom:Float = 0f,     //无需设置
-        var label: String = "title",  //点击柱形所显示详细信息之标签
-        var value: String = "desc"  //点击柱形所显示详细信息之值
+        var topLabel: String = "top",  //柱形顶部文字
+        var bottomLabel: String = "bottom"  //柱形底部文字
     ){
         fun initRectF(rect: RectF?) {
             if (rect == null) return
             rect[left, top, right] = bottom
         }
     }
+
+    data class UserRate(
+        var rate: IntArray? = intArrayOf(55, 79, 62, 33, 16, 85) ,
+        var rateTitle:Array<String> = arrayOf("他的性格特点", "他的生活态度", "他的处事风格", "他的爱情观念", "他的消费观念", "他的家庭关系"),
+        var rateDesc:Array<String> = arrayOf("他的性格特点主要是blablabla", "他的生活态度主要是blablabla", "他的处事风格主要是blablabla", "他的爱情观念主要是blablabla", "他的消费观念主要是blablabla", "他的家庭关系主要是blablabla")
+    )
 }
