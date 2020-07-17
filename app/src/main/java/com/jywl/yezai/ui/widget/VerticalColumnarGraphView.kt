@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
+import com.jywl.yezai.utils.DisplayUtil
 
 
 /**
@@ -74,17 +75,18 @@ class VerticalColumnarGraphView : View {
         textPaint?.textAlign = Paint.Align.CENTER;
 
         paintA = Paint(Paint.ANTI_ALIAS_FLAG)
-        paintA?.strokeWidth = 8f
+        paintA?.strokeWidth = DisplayUtil.dip2px(context, 4f).toFloat()
         paintA?.style = Paint.Style.STROKE
         paintA?.color = Color.parseColor("#FF0844")
 
         paintB = Paint(Paint.ANTI_ALIAS_FLAG)
-        paintB?.strokeWidth = 8f
+        paintB?.strokeWidth = DisplayUtil.dip2px(context, 4f).toFloat()
         paintB?.style = Paint.Style.STROKE
         paintB?.color = Color.parseColor("#FFC29F")
 
         dotPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        dotPaint?.style = Paint.Style.FILL
+        dotPaint?.style = Paint.Style.STROKE
+        dotPaint?.strokeWidth = DisplayUtil.dip2px(context, 4f).toFloat()
         //dotPaint.alpha = 255
         dotPaint?.color = Color.WHITE
 
@@ -205,8 +207,10 @@ class VerticalColumnarGraphView : View {
             val item = columnarData!![i]
             paint!!.color = item.color
             val ratioHeight = chartHeight * item.ratio
-            item.left = clipRect.left + space * (i + 1) + (chartWidth * i).toFloat()
+            //item.left = clipRect.left + space * (i + 1) + (chartWidth * i).toFloat()
+            if (i == 0) item.left = clipRect.left.toFloat() else item.left = clipRect.left + 2 * i * space.toFloat()
             item.top = clipRect.top + chartHeight - ratioHeight
+            //item.right = item.left + chartWidth
             item.right = item.left + chartWidth
             item.bottom = clipRect.bottom.toFloat()
             item.initRectF(rectF)
@@ -248,14 +252,15 @@ class VerticalColumnarGraphView : View {
         //画数值点
         valuePointList.forEachIndexed { index, pointF ->
             if (index == selectedIndex){
-                canvas.drawCircle(pointF.x, pointF.y, 15f, dotPaint!!)
+                canvas.drawCircle(pointF.x, pointF.y, DisplayUtil.dip2px(context, 5f).toFloat(), dotPaint!!)
             }
         }
     }
 
     //计算柱形的宽度
     private fun calculateSuitableChartWidth(width: Int): Int {
-        return width / (column * 2 + 1)
+        //return width / (column * 2 + 1)
+        return width / (column * 2 - 1)
     }
 
 
@@ -268,7 +273,7 @@ class VerticalColumnarGraphView : View {
         valuePointList.clear()
         userData.rate?.forEachIndexed { index, rate ->
             val x = (columnarData!![index].left + columnarData!![index].right) / 2f
-            val y = columnarData!![index].bottom - (columnarData!![index].bottom - columnarData!![index].top) * (rate / 100f)
+            val y = columnarData!![index].bottom * 0.8f - (columnarData!![index].bottom * 0.8f - columnarData!![index].top * 1.2f) * (rate / 100f)
             valuePointList.add(PointF(x, y))
         }
     }
