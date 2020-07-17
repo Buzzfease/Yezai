@@ -40,24 +40,25 @@ class TinderCardView @JvmOverloads constructor(
     private var rightBoundary = 0f
     private var leftBoundary = 0f
     private var screenWidth = 0
-    private var listener: OnLoadMoreListener? = null
+    private var loadMoreListener: OnLoadMoreListener? = null
     private var onChildClickListener:OnChildClickListener? = null
+    private var onUserRateSelectListener:OnUserRateSelectListener? = null
+
     private var currentUser:UserBean? = null
     private var currentIndex:Int = 0
 
 
     fun init(context: Context) {
-        if (!isInEditMode) {
-            View.inflate(context, R.layout.layout_tinder_card, this)
-            screenWidth = DisplayUtil.getScreenWidth(context)
-            leftBoundary = screenWidth * (1.0f / 6.0f) //是否左滑的边界
-            rightBoundary = screenWidth * (5.0f / 6.0f) //是否右滑的边界
-            padding = DisplayUtil.dip2px(context, PADDINGVALUE)
-            setOnTouchListener(this)
-            initPicContainer()
-            initUserDataTagView()
-            initUserTargetTagView()
-        }
+        View.inflate(context, R.layout.layout_tinder_card, this)
+        screenWidth = DisplayUtil.getScreenWidth(context)
+        leftBoundary = screenWidth * (1.0f / 6.0f) //是否左滑的边界
+        rightBoundary = screenWidth * (5.0f / 6.0f) //是否右滑的边界
+        padding = DisplayUtil.dip2px(context, PADDINGVALUE)
+        setOnTouchListener(this)
+        initPicContainer()//图片展示三宫格
+        initUserHeartRate()//心灵视界对比
+        initUserDataTagView()
+        initUserTargetTagView()
     }
 
     override fun onInterceptTouchEvent(motionEvent: MotionEvent): Boolean {
@@ -163,8 +164,8 @@ class TinderCardView @JvmOverloads constructor(
                     val viewGroup = view.parent as ViewGroup
                     viewGroup.removeView(view)
                     val count = viewGroup.childCount //需求5，增加新卡片
-                    if (count == 1 && listener != null) {
-                        listener!!.onLoad()
+                    if (count == 1 && loadMoreListener != null) {
+                        loadMoreListener!!.onLoad()
                     }
                 }
 
@@ -187,6 +188,12 @@ class TinderCardView @JvmOverloads constructor(
         currentUser = user
         currentIndex = index
         tvMoreAction.setOnClickListener(this)
+        llPiPei.setOnClickListener(this)
+        ivHeartRateHelp.setOnClickListener(this)
+    }
+
+    fun bindUserRate(dataA: VerticalColumnarGraphView.UserRate, dataB: VerticalColumnarGraphView.UserRate){
+        verticalColumnar.setData(dataA, dataB)
     }
 
     private fun initUserDataTagView(){
@@ -222,6 +229,14 @@ class TinderCardView @JvmOverloads constructor(
         picContainer.setImageData(imageList)
     }
 
+    private fun initUserHeartRate(){
+        verticalColumnar.setOnColumnarItemClickListener(object: VerticalColumnarGraphView.OnColumnarItemClickListener{
+            override fun onColumnarItemClick(view: VerticalColumnarGraphView?, selectedIndex: Int, columnarItem: VerticalColumnarGraphView.ColumnarItem, userItem: VerticalColumnarGraphView.UserRate) {
+                onUserRateSelectListener?.onUserRateSelect(this@TinderCardView, currentIndex, view, selectedIndex, columnarItem, userItem)
+            }
+        })
+    }
+
     override fun onClick(view: View) {
         onChildClickListener?.onChildClick(currentUser, currentIndex, view)
     }
@@ -231,7 +246,7 @@ class TinderCardView @JvmOverloads constructor(
     }
 
     fun setOnLoadMoreListener(listener: OnLoadMoreListener?) {
-        this.listener = listener
+        this.loadMoreListener = listener
     }
 
     interface OnChildClickListener{
@@ -240,6 +255,14 @@ class TinderCardView @JvmOverloads constructor(
 
     fun setOnChildClickListener(listener: OnChildClickListener){
         this.onChildClickListener = listener
+    }
+
+    interface OnUserRateSelectListener{
+        fun onUserRateSelect(cardView: TinderCardView, cardIndex:Int, view: VerticalColumnarGraphView?, selectedIndex: Int, columnarItem: VerticalColumnarGraphView.ColumnarItem, userItem: VerticalColumnarGraphView.UserRate)
+    }
+
+    fun setOnUserRateSelectListener(listener:OnUserRateSelectListener?){
+        this.onUserRateSelectListener = listener
     }
 
     companion object {

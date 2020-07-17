@@ -124,5 +124,7 @@ dependencies {
     implementation 'com.yanzhenjie:permission:2.0.3'
     //轮盘选择
     implementation 'com.contrarywind:Android-PickerView:4.1.9'
+    //easyPopup
+    implementation 'com.github.zyyoona7:EasyPopup:1.1.2'
 
 }

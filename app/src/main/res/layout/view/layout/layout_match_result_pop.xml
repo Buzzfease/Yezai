@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="340dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/shape_white_card"
+        android:padding="15dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@mipmap/icon_pipei_bj">
+
+            <com.jywl.yezai.ui.widget.RoundImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                app:displayType="circle"
+                app:displayBorder="true"
+                app:borderWidth="1dp"
+                app:borderColor="@color/white"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_default_circle_avatar"/>
+
+            <com.jywl.yezai.ui.widget.RoundImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                app:displayType="circle"
+                app:displayBorder="true"
+                app:borderWidth="1dp"
+                app:borderColor="@color/white"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_default_circle_avatar"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="匹配度"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="6dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColorBlack"
+                    android:layout_marginBottom="22dp" />
+
+                <TextView
+                    android:id="@+id/tvMatchCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:text="74%" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_yinhao"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="bold"
+                android:text="你们两个都愿意为爱情付出努力给予对方多一些信任会更好"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_yinhao_reverse"
+                android:layout_gravity="bottom"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:textSize="14sp"
+            android:textColor="@color/textColorBlack"
+            android:textStyle="bold"
+            android:text="详情分析"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/shape_user_find"
+            android:padding="12dp"
+            android:textColor="@color/textColorGrey"
+            android:textSize="14sp"
+            android:text="你们渴望爱情向往幸福，喜欢两个人的甜 蜜，并为此付诸努力，性格上一个强势一个 随和形成互补。"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:textSize="14sp"
+            android:textColor="@color/textColorBlack"
+            android:textStyle="bold"
+            android:text="详情分析"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/shape_user_find"
+            android:padding="12dp"
+            android:textColor="@color/textColorGrey"
+            android:textSize="14sp"
+            android:text="两人的相处就是一个不断磨合的过程，学会 控制情绪，多换位思考，给予对方多一些信 任，大事我做，小事你来，这种相处模式还 是很不错的。"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="4dp"
+        android:src="@mipmap/icon_guanbi"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
+
+</RelativeLayout>
+

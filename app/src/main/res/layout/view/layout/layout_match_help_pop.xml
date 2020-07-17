@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="340dp"
+    android:layout_height="350dp"
+    android:background="@color/transparent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_margin="15dp"
+        android:padding="15dp"
+        android:background="@drawable/shape_white_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="bold"
+                android:text="维度"/>
+
+
+            <!--性格特点-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/textColorBlack"
+                android:textSize="12sp"
+                android:text="性格特点"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="12dp"
+                android:text="外向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="6dp"
+                android:text="内向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider_grey"/>
+
+            <!--生活态度-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/textColorBlack"
+                android:textSize="12sp"
+                android:text="生活态度"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="12dp"
+                android:text="外向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="6dp"
+                android:text="内向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider_grey"/>
+
+            <!--爱情观念-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/textColorBlack"
+                android:textSize="12sp"
+                android:text="爱情观念"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="12dp"
+                android:text="外向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="6dp"
+                android:text="内向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider_grey"/>
+
+            <!--处事风格-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/textColorBlack"
+                android:textSize="12sp"
+                android:text="处事风格"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="12dp"
+                android:text="外向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="6dp"
+                android:text="内向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider_grey"/>
+
+            <!--消费观念-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/textColorBlack"
+                android:textSize="12sp"
+                android:text="消费观念"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="12dp"
+                android:text="外向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="6dp"
+                android:text="内向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider_grey"/>
+
+            <!--家庭关系-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/textColorBlack"
+                android:textSize="12sp"
+                android:text="家庭关系"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="12dp"
+                android:text="外向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textColorGrey"
+                android:layout_marginTop="6dp"
+                android:text="内向: 性格较活泼开朗, 比较乐于表达自己"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider_grey"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="4dp"
+        android:src="@mipmap/icon_guanbi"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
+
+</RelativeLayout>

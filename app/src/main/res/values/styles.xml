@@ -23,8 +23,6 @@
 
     <!--动态顶部tab切换-->
     <style name="TabPagerStrip">
-        <item name="android:background">@color/white</item>
-        <item name="apTabBackground">@drawable/shape_tab_bg_white</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textAppearance">@style/CustomTabPageIndicator.Text</item>
         <item name="android:textColor">@color/textColorBlack</item>
@@ -40,8 +38,6 @@
 
     <!--搜索顶部tab切换-->
     <style name="SearchTabPagerStrip">
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="apTabBackground">@drawable/shape_tab_bg_primary</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textAppearance">@style/CustomTabPageIndicator.Text</item>
         <item name="android:textColor">@color/textColorLightGray</item>
@@ -64,5 +60,11 @@
         <attr name="underlineColor" format="color" />
         <attr name="underlineTopMargin" format="dimension" />
     </declare-styleable>
+
+    <!--基础弹簧动画-->
+    <style name="MD_WindowAnimation">
+        <item name="android:windowEnterAnimation">@anim/popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/popup_exit</item>
+    </style>
 
 </resources>

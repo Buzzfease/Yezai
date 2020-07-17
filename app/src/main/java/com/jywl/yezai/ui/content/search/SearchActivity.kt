@@ -6,7 +6,9 @@ import com.jywl.yezai.R
 import com.jywl.yezai.ui.content.BaseMvpActivity
 import com.jywl.yezai.utils.DisplayUtil
 import com.jywl.yezai.utils.EasyStatusBar
-import kotlinx.android.synthetic.main.fragment_live_action.*
+import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.fragment_live_action.tabStrip
+import kotlinx.android.synthetic.main.fragment_live_action.viewPager
 
 /**
  * created by Buzz
@@ -26,6 +28,9 @@ class SearchActivity :BaseMvpActivity<SearchPresenter>(), SearchContract.View {
     override fun initViewAndEvent() {
         EasyStatusBar.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorPrimary),false)
         initTabs()
+        ivBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun initTabs(){

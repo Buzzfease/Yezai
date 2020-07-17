@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.ui.widget.TinderCardView.OnChildClickListener
 import com.jywl.yezai.ui.widget.TinderCardView.OnLoadMoreListener
+import com.jywl.yezai.ui.widget.TinderCardView.OnUserRateSelectListener
 import com.jywl.yezai.utils.DisplayUtil
 import timber.log.Timber
 
@@ -23,7 +24,7 @@ class TinderStackLayout @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) :
-    FrameLayout(context!!, attrs, defStyleAttr), OnLoadMoreListener, OnChildClickListener {
+    FrameLayout(context!!, attrs, defStyleAttr), OnLoadMoreListener, OnChildClickListener, OnUserRateSelectListener {
     private var params: ViewGroup.LayoutParams? = null
     private var index = 0
     private var scaleY = 0
@@ -36,6 +37,11 @@ class TinderStackLayout @JvmOverloads constructor(
     private var onStackChildClickListener:OnStackChildClickListener? = null
     fun setOnStackChildClickListener(listener:OnStackChildClickListener){
         this.onStackChildClickListener = listener
+    }
+
+    private var onUserHeartRateItemSelectListener: OnUserHeartRateItemSelectListener? = null
+    fun setOnUserHeartRateItemSelectListener(listener: OnUserHeartRateItemSelectListener?){
+        this.onUserHeartRateItemSelectListener = listener
     }
 
     private fun init() {
@@ -59,7 +65,7 @@ class TinderStackLayout @JvmOverloads constructor(
 //            .setInterpolator(AnticipateOvershootInterpolator()).duration = DURATIONTIME.toLong()
     }
 
-    fun setData(list: List<UserBean>?) {
+    fun setData(list: List<UserBean>?, dataA:VerticalColumnarGraphView.UserRate, dataB:VerticalColumnarGraphView.UserRate) {
         mList = list
         if (mList == null) {
             return
@@ -67,9 +73,11 @@ class TinderStackLayout @JvmOverloads constructor(
         val i = index
         while (index < i + STACK_SIZE) {
             tc = TinderCardView(context)
-            tc?.bind(mList!![index], index)
             tc?.setOnLoadMoreListener(this)
             tc?.setOnChildClickListener(this)
+            tc?.setOnUserRateSelectListener(this)
+            tc?.bind(mList!![index], index)
+            tc?.bindUserRate(dataA, dataB)
             addCard(tc)
             index++
         }
@@ -112,6 +120,13 @@ class TinderStackLayout @JvmOverloads constructor(
         onStackChildClickListener?.onStackChildClick(userBean, position, view)
     }
 
+    override fun onUserRateSelect(cardView:TinderCardView, cardIndex:Int,
+                                  view: VerticalColumnarGraphView?, selectedIndex: Int,
+                                  columnarItem: VerticalColumnarGraphView.ColumnarItem,
+                                  userItem: VerticalColumnarGraphView.UserRate) {
+        onUserHeartRateItemSelectListener?.onUserRateItemSelect(cardView, cardIndex, view, selectedIndex, columnarItem, userItem)
+    }
+
     companion object {
         const val BASESCALE_X_VALUE = 50.0f
         const val BASESCALE_Y_VALUE = 8
@@ -125,6 +140,10 @@ class TinderStackLayout @JvmOverloads constructor(
 
     interface OnStackChildClickListener{
         fun onStackChildClick(userBean: UserBean?, position: Int, view: View)
+    }
+
+    interface OnUserHeartRateItemSelectListener{
+        fun onUserRateItemSelect(cardView:TinderCardView, cardIndex:Int, view: VerticalColumnarGraphView?, selectedIndex: Int, columnarItem: VerticalColumnarGraphView.ColumnarItem, userItem: VerticalColumnarGraphView.UserRate)
     }
 
     init {

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/icon_shuju_bj">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivDashuJu"
+            android:layout_width="64dp"
+            android:layout_height="68dp"
+            android:src="@mipmap/icon_dashuju"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="匹配报告通过也在大数据分析生成"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/llItem1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="60dp"
+            android:gravity="center_vertical"
+            android:background="@mipmap/icon_xuanzhong"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivDot1"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/selector_match_analise_dot"/>
+
+            <TextView
+                android:id="@+id/tvHint1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/gray"
+                android:text="基本资料分析中..."/>
+            
+            <ImageView
+                android:id="@+id/ivCheck1"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="20dp"
+                android:visibility="gone"
+                android:src="@mipmap/icon_shuju_gouxuan"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llItem2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivDot2"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/selector_match_analise_dot"/>
+
+            <TextView
+                android:id="@+id/tvHint2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/gray"
+                android:text="大数据匹配分析中..."/>
+
+            <ImageView
+                android:id="@+id/ivCheck2"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="20dp"
+                android:visibility="gone"
+                android:src="@mipmap/icon_shuju_gouxuan"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llItem3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivDot3"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/selector_match_analise_dot"/>
+
+            <TextView
+                android:id="@+id/tvHint3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/gray"
+                android:text="匹配报告生成中..."/>
+
+            <ImageView
+                android:id="@+id/ivCheck3"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="20dp"
+                android:visibility="gone"
+                android:src="@mipmap/icon_shuju_gouxuan"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvGoResult"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_primary_button"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="invisible"
+            android:text="打招呼并查看报告"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/icon_guanbi"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
+
+</RelativeLayout>

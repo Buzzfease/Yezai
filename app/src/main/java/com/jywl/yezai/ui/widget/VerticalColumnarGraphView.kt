@@ -8,6 +8,7 @@ import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import com.jywl.yezai.utils.DisplayUtil
+import timber.log.Timber
 
 
 /**
@@ -27,14 +28,12 @@ class VerticalColumnarGraphView : View {
 
     private var paint: Paint? = null                //柱形画笔
     private var textPaint: TextPaint? = null        //文字画笔
-    private var paintA:Paint? = null                //我的曲线画笔
-    private var paintB:Paint? = null                //对方曲线画笔
-    private var pathA:Path? = null                  //我的曲线路径
-    private var pathB:Path? = null                  //对方曲线路径
+    private var rateLinePaint:Paint? = null         //曲线画笔
+    private var linePath:Path? = null               //曲线路径
     private var dotPaint:Paint? = null              //白点画笔
 
     private val labelTextColor = 0x88bc97                   //字体颜色
-    private var labelTextSize = 0f                          //坐标字体大小
+    private var labelTextSize = 0f                          //字体大小
 
     private var clipRect: Rect = Rect()
     private var rectF = RectF()
@@ -60,10 +59,14 @@ class VerticalColumnarGraphView : View {
     private var lastSelectedIndex = -1      //上一次点击选中柱形
     private var selectedIndex = -1          //点击选中柱形
 
-    private val onColumnarItemClickListener: OnColumnarItemClickListener? = null
+    private var onColumnarItemClickListener: OnColumnarItemClickListener? = null
+    fun setOnColumnarItemClickListener(listener: OnColumnarItemClickListener?){
+        this.onColumnarItemClickListener = listener
+    }
     private var pressedTimStamp: Long = 0
 
     private fun init(){
+        setLayerType(LAYER_TYPE_SOFTWARE, null)
         paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
         textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
@@ -74,32 +77,18 @@ class VerticalColumnarGraphView : View {
         textPaint?.alpha = 0xFF
         textPaint?.textAlign = Paint.Align.CENTER;
 
-        paintA = Paint(Paint.ANTI_ALIAS_FLAG)
-        paintA?.strokeWidth = DisplayUtil.dip2px(context, 4f).toFloat()
-        paintA?.style = Paint.Style.STROKE
-        paintA?.color = Color.parseColor("#FF0844")
-
-        paintB = Paint(Paint.ANTI_ALIAS_FLAG)
-        paintB?.strokeWidth = DisplayUtil.dip2px(context, 4f).toFloat()
-        paintB?.style = Paint.Style.STROKE
-        paintB?.color = Color.parseColor("#FFC29F")
+        rateLinePaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        rateLinePaint?.strokeWidth = DisplayUtil.dip2px(context, 4f).toFloat()
+        rateLinePaint?.style = Paint.Style.STROKE
 
         dotPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         dotPaint?.style = Paint.Style.STROKE
         dotPaint?.strokeWidth = DisplayUtil.dip2px(context, 4f).toFloat()
-        //dotPaint.alpha = 255
         dotPaint?.color = Color.WHITE
 
-        pathA = Path()
-        pathB = Path()
+        linePath = Path()
 
         initData()
-
-        val dataA = UserRate()
-        val dataB = UserRate()
-        dataA.rate = intArrayOf(55, 79, 62, 33, 16, 85)
-        dataB.rate = intArrayOf(16, 88, 56, 90, 13, 99)
-        setData(dataA, dataB)
     }
 
 
@@ -125,7 +114,14 @@ class VerticalColumnarGraphView : View {
     fun setData(dataA: UserRate, dataB: UserRate) {
         this.userDataA = dataA
         this.userDataB = dataB
-        invalidate()
+
+//            val compare :HashMap<Int, Int> = HashMap()
+//            userDataA?.rate?.forEachIndexed { index, i ->
+//                compare[index] = i - userDataB?.rate!![index]
+//            }
+
+        selectedIndex = 0
+        performColumnarItemClick(selectedIndex)
     }
 
     //获取选中的柱形index,
@@ -172,9 +168,11 @@ class VerticalColumnarGraphView : View {
         if (lastSelectedIndex != selectedIndex) {
             lastSelectedIndex = selectedIndex
             invalidate()
-            val item = if (selectedIndex < 0) null else columnarData!![selectedIndex]
-            if (onColumnarItemClickListener != null && item != null) {
-                onColumnarItemClickListener.onColumnarItemClick(this, selectedIndex, item)
+            val columnarItem = if (selectedIndex < 0) null else columnarData!![selectedIndex]
+            val userItem = if (selectedIndex < 0) null else userDataB
+            if (onColumnarItemClickListener != null && columnarItem != null && userItem != null) {
+                Timber.e("is In perform")
+                onColumnarItemClickListener?.onColumnarItemClick(this, selectedIndex, columnarItem, userItem)
             }
         }
     }
@@ -184,15 +182,25 @@ class VerticalColumnarGraphView : View {
         clipRect.set(paddingLeft + lOffset, paddingTop + tOffset, width - paddingRight - rOffset, height - paddingBottom - bOffset);
         drawColumnarAndText(canvas)
 
-        if (userDataA != null){
+        if (userDataA != null && userDataB != null){
+            //计算我方数值点，控制点
             calculateRatePoint(userDataA!!, mValuePointListA)
             calculateControlPoint(mValuePointListA, mControlPointListA)
-            drawUserRateLinesAndDot(mValuePointListA, mControlPointListA, pathA!!, paintA!!, canvas)
-        }
-        if (userDataB != null){
+            //计算对方数值点，控制点
             calculateRatePoint(userDataB!!, mValuePointListB)
             calculateControlPoint(mValuePointListB, mControlPointListB)
-            drawUserRateLinesAndDot(mValuePointListB, mControlPointListB, pathB!!, paintB!!, canvas)
+
+            //设置阴影
+            rateLinePaint?.setShadowLayer(DisplayUtil.dip2px(context, 2f).toFloat(), 0f, DisplayUtil.dip2px(context, 5f).toFloat(), Color.parseColor("#B3B3B3"))
+            //画我的曲线
+            rateLinePaint?.color = Color.parseColor("#FF0844")
+            drawUserRateLinesAndDot(mValuePointListA, mControlPointListA, linePath!!, rateLinePaint!!, canvas)
+            //画对方曲线
+            rateLinePaint?.color = Color.parseColor("#FFC29F")
+            drawUserRateLinesAndDot(mValuePointListB, mControlPointListB, linePath!!, rateLinePaint!!, canvas)
+            //关闭阴影
+            rateLinePaint?.setShadowLayer(0f, 0f, 0f, Color.GRAY)
+
         }
     }
 
@@ -264,11 +272,6 @@ class VerticalColumnarGraphView : View {
     }
 
 
-    //柱状图点击监听，返回点击的柱状图index, 如果没有选中则返回-1
-    interface OnColumnarItemClickListener {
-        fun onColumnarItemClick(view: VerticalColumnarGraphView?, selectedIndex: Int, item:ColumnarItem)
-    }
-
     private fun calculateRatePoint(userData:UserRate, valuePointList:ArrayList<PointF>) {
         valuePointList.clear()
         userData.rate?.forEachIndexed { index, rate ->
@@ -315,6 +318,11 @@ class VerticalColumnarGraphView : View {
                 }
             }
         }
+    }
+
+    //柱状图点击监听，返回点击的柱状图index, 如果没有选中则返回-1
+    interface OnColumnarItemClickListener {
+        fun onColumnarItemClick(view: VerticalColumnarGraphView?, selectedIndex: Int, columnarItem:ColumnarItem, userItem:UserRate)
     }
 
     data class ColumnarItem (
