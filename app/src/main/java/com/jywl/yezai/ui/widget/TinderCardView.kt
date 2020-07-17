@@ -190,6 +190,7 @@ class TinderCardView @JvmOverloads constructor(
         tvMoreAction.setOnClickListener(this)
         llPiPei.setOnClickListener(this)
         ivHeartRateHelp.setOnClickListener(this)
+        llHeartRateText.setOnClickListener(this)
     }
 
     fun bindUserRate(dataA: VerticalColumnarGraphView.UserRate, dataB: VerticalColumnarGraphView.UserRate){

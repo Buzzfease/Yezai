@@ -369,6 +369,7 @@
                     </com.jywl.yezai.ui.widget.VerticalColumnarGraphView>
 
                     <LinearLayout
+                        android:id="@+id/llHeartRateText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -699,6 +700,7 @@
                     <!--用户信息标签-->
                     <com.jywl.yezai.ui.widget.FlowTagView
                         android:id="@+id/tagViewUserData"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/light_grey">
+
+
+        <include layout="@layout/layout_title_bar"/>
+
+        <!--心灵视界-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:paddingBottom="20dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_white_card"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/textColorBlack"
+                    android:textStyle="bold"
+                    android:text="我的心灵视界"/>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_height="wrap_content"
+                    android:text="她"
+                    android:drawablePadding="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/brown"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="12sp"
+                    android:background="@drawable/shape_video_card_user_tag"
+                    android:textColor="@color/light_brown"
+                    android:text="有主见"/>
+
+
+                <ImageView
+                    android:id="@+id/ivHeartRateHelp"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@mipmap/icon_zq_help"
+                    android:padding="5dp"/>
+
+            </RelativeLayout>
+
+            <com.jywl.yezai.ui.widget.VerticalColumnarGraphView
+                android:id="@+id/verticalColumnar"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+            </com.jywl.yezai.ui.widget.VerticalColumnarGraphView>
+
+            <LinearLayout
+                android:id="@+id/llHeartRateText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_user_find"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/userHeartRateTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColorGrey"
+                    android:text="她的处事风格：比较自主"/>
+
+                <TextView
+                    android:id="@+id/userHeartRateDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="20dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/textColorGrey"
+                    android:text="她很坚持已见，大部分时候会按照自己的想法行为，如 果和别人意见有冲突，也可能会妥协。"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
+
+                <LinearLayout
+                    android:id="@+id/llPiPei"
+                    android:layout_width="325dp"
+                    android:layout_height="70dp"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    android:background="@mipmap/icon_ckpp_bj">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <com.jywl.yezai.ui.widget.RoundImageView
+                            android:id="@+id/ivLoverAvatarB"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="50dp"
+                            android:scaleType="centerCrop"
+                            android:layout_centerVertical="true"
+                            app:displayType="circle"
+                            app:displayBorder="true"
+                            app:borderWidth="1dp"
+                            app:borderColor="@color/white"
+                            android:src="@mipmap/ic_default_circle_avatar"/>
+
+                        <com.jywl.yezai.ui.widget.RoundImageView
+                            android:id="@+id/ivLoverAvatarA"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:scaleType="centerCrop"
+                            android:layout_marginStart="20dp"
+                            android:layout_centerVertical="true"
+                            app:displayType="circle"
+                            app:displayBorder="true"
+                            app:borderWidth="1dp"
+                            app:borderColor="@color/white"
+                            android:src="@mipmap/ic_default_circle_avatar"/>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:paddingTop="10dp"
+                            android:text="查看匹配分析"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            android:paddingBottom="10dp"
+                            android:gravity="center"
+                            android:text="看看你们有多合适"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="47dp"
+                        android:layout_height="47dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/icon_pp_dj"
+                        android:layout_marginEnd="15dp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

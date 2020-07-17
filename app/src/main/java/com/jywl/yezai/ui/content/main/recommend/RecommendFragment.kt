@@ -12,6 +12,7 @@ import com.jywl.yezai.R
 import com.jywl.yezai.entity.UserBean
 import com.jywl.yezai.ui.content.BaseMvpFragment
 import com.jywl.yezai.ui.content.actiondetail.UserActionActivity
+import com.jywl.yezai.ui.content.heartview.HeartViewActivity
 import com.jywl.yezai.ui.content.search.SearchActivity
 import com.jywl.yezai.ui.widget.TinderCardView
 import com.jywl.yezai.ui.widget.TinderStackLayout
@@ -74,6 +75,10 @@ class RecommendFragment : BaseMvpFragment<RecommendPresenter>(),
                     }
                     R.id.ivHeartRateHelp ->{
                         showMatchHelpPop()
+                    }
+                    R.id.llHeartRateText ->{
+                        val intent = Intent(activity, HeartViewActivity::class.java)
+                        startActivity(intent)
                     }
                 }
             }

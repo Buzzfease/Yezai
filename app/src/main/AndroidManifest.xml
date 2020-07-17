@@ -52,6 +52,10 @@
             android:screenOrientation="portrait"
             android:launchMode="singleTop"/>
 
+        <activity android:name=".ui.content.heartview.HeartViewActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"/>
+
     </application>
 
 </manifest>
